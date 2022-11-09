@@ -1,4 +1,5 @@
 import random
+from string import ascii_uppercase
 
 
 def test_1():
@@ -17,6 +18,7 @@ def test_2():
 
 def test_3():
     """генерирует случайный пароль"""
+
     length = int(input())  # длина пароля.
     password = []
     for _ in range(length):
@@ -34,8 +36,37 @@ def test_4():
     print(*result, sep=' ')
 
 
+def generate_ip():
+    """генерирует и возвращает случайный корректный IP адрес"""
+
+    arr = random.sample(range(0, 256), 4)
+    return '.'.join(list(map(str, arr)))
+
+
+def generate_index():
+    """генерирует и возвращает случайный корректный почтовый индекс Латверии"""
+
+    letter = ''.join(random.sample(ascii_uppercase, 4))
+    num = random.sample(range(0, 100), 2)
+    return f'{letter[:2]}{num[0]}_{num[1]}{letter[2:]}'
+
+
+def random_matrix():
+    """перемешивает случайным образом содержимое матрицы"""
+    matrix = [[1, 2, 3, 4],
+              [5, 6, 7, 8],
+              [9, 10, 11, 12],
+              [13, 14, 15, 16]]
+    # for m in matrix:
+    #     random.shuffle(m)
+    [random.shuffle(m) for m in matrix]
+    print(matrix)
+
 def main():
-    test_4()
+    random_matrix()
+    # print(generate_index())
+    # print(generate_ip())
+    # test_4()
     # test_3()
     # test_2()
     # test_1()
