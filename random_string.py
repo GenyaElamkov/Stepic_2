@@ -86,6 +86,7 @@ def anagram():
     random.shuffle(word)
     print(*word, sep='')
 
+
 def bingo():
     """Программа, которая с помощью модуля random генерирует и выводит случайную карточку для игры в бинго"""
     # matrix = [[random.randint(1, 75) for _ in range(5)] for _ in range(5)]
@@ -104,9 +105,23 @@ def bingo():
             print('')
 
 
+def secret_friend():
+    """
+    Случайным образом назначает каждому ученику его тайного друга,
+    который будет вместе с ним решать задачи по программированию
+    """
+    arr_fio = [input() for _ in range(int(input()))]
+    temp = arr_fio.copy()
+
+    print(arr_fio)
+
+    for i in range()
+    # Имя Фамилия и Имя - Фамилия (тайного друга)
+
 
 def main():
-    bingo()
+    secret_friend()
+    # bingo()
     # anagram()
     # random_lottery_ticket_numbers()
     # random_matrix()
