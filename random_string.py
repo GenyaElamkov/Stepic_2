@@ -1,5 +1,6 @@
 import random
-from string import ascii_uppercase
+from random import sample, shuffle, choice
+from string import digits, ascii_uppercase, ascii_letters, ascii_lowercase
 
 
 def test_1():
@@ -53,6 +54,7 @@ def generate_index():
 
 def random_matrix():
     """Перемешивает случайным образом содержимое матрицы"""
+
     matrix = [[1, 2, 3, 4],
               [5, 6, 7, 8],
               [9, 10, 11, 12],
@@ -89,12 +91,6 @@ def anagram():
 
 def bingo():
     """Программа, которая с помощью модуля random генерирует и выводит случайную карточку для игры в бинго."""
-    # matrix = [[random.randint(1, 75) for _ in range(5)] for _ in range(5)]
-    # matrix[2][2] = 0
-    # for i in matrix:
-    #     for j in i:
-    #         print(str(j).ljust(3), end='')
-    #     print()
 
     arr = random.sample(list(range(1, 76)), 25)
     random.shuffle(arr)
@@ -108,15 +104,15 @@ def bingo():
 def secret_friend():
     """
     Случайным образом назначает каждому ученику его тайного друга,
-    который будет вместе с ним решать задачи по программированию.
+    который будет вместе решать задачи по программированию.
     """
     arr_fio = [input() for _ in range(int(input()))]
     temp = arr_fio.copy()
     random.shuffle(temp)
     d = {}
-    for i in range(len(temp)-1):
+    for i in range(len(temp) - 1):
         if i < len(temp):
-            d.setdefault(temp[i], temp[i+1])
+            d.setdefault(temp[i], temp[i + 1])
     else:
         d.setdefault(temp[-1], temp[0])
 
@@ -124,13 +120,63 @@ def secret_friend():
         print(f'{key} - {d[key]}')
 
 
-    # print(d)
+def password_generator_1():
+    """
+    Генератор n паролей длиной m символов, состоящих из строчных и прописных английских букв и цифр,
+    кроме тех, которые легко перепутать между собой.
+    «l» (L маленькое);
+    «I» (i большое);
+    «1» (цифра);
+    «o» и «O» (большая и маленькая буквы);
+    «0» (цифра).
+    """
+    def generate_password(length):
+        # chars = digits + ascii_letters
+        # symbols = 'Il1o0O'
+        # for c in symbols:
+        #     chars = chars.replace(c, '')
 
-    # Имя Фамилия и Имя - Фамилия (тайного друга)
+        chars = ''.join((set(ascii_letters) | set(digits)) - set('lI1oO0'))
+        return ''.join(sample(chars, length))
+
+    def generate_passwords(count, length):
+        return [generate_password(length) for _ in range(count)]
+
+    n, m = [int(input()) for _ in range(2)]
+    print(*generate_passwords(n, m), sep='\n')
+
+
+def password_generator_2():
+    """
+    Генератор паролей.
+    Дополнительное условие: в каждом пароле обязательно должна присутствовать хотя бы одна цифра и как минимум
+    по одной букве в верхнем и нижнем регистре.
+    """
+    def generate_password(length):
+        letters = [ascii_lowercase, ascii_uppercase, digits]
+        letters = [''.join(set(letter) - set('lI1oO0')) for letter in letters]
+
+        chars = []
+        while len(chars) < length:
+            for letter in letters:
+                if len(chars) == length:
+                    break
+                chars += choice(letter)
+
+        shuffle(chars)
+        return ''.join(chars)
+
+    def generate_passwords(count, length):
+        return [generate_password(length) for _ in range(count)]
+
+    n, m = [int(input()) for _ in range(2)]
+    print(*generate_passwords(n, m), sep='\n')
 
 
 def main():
-    secret_friend()
+    password_generator_2()
+    # password_generator_1()
+    # secret_friend()
     # bingo()
     # anagram()
     # random_lottery_ticket_numbers()
