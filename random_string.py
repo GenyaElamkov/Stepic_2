@@ -1,5 +1,5 @@
 import random
-from random import sample, shuffle, choice
+from random import sample, shuffle, choice, uniform
 from string import digits, ascii_uppercase, ascii_letters, ascii_lowercase
 
 
@@ -130,6 +130,7 @@ def password_generator_1():
     «o» и «O» (большая и маленькая буквы);
     «0» (цифра).
     """
+
     def generate_password(length):
         # chars = digits + ascii_letters
         # symbols = 'Il1o0O'
@@ -152,6 +153,7 @@ def password_generator_2():
     Дополнительное условие: в каждом пароле обязательно должна присутствовать хотя бы одна цифра и как минимум
     по одной букве в верхнем и нижнем регистре.
     """
+
     def generate_password(length):
         letters = [ascii_lowercase, ascii_uppercase, digits]
         letters = [''.join(set(letter) - set('lI1oO0')) for letter in letters]
@@ -173,8 +175,42 @@ def password_generator_2():
     print(*generate_passwords(n, m), sep='\n')
 
 
+def area_figure():
+    """
+    При поомощи метода Монте-Карло вычисляет площадь фигуры,
+    задаваемой с помощью системы неравенств.
+    """
+    n = 10 ** 6
+    k = 0
+    s0 = 16
+    for _ in range(n):
+        x = uniform(-2, 2)
+        y = uniform(-2, 2)
+
+        if x ** 3 + y ** 4 + 2 >= 0 and 3 * x + y ** 2 <= 2:
+            k += 1
+    print((k / n) * s0)
+
+
+def pi_area():
+    """При помощи метода Монте-Карло определяет приближённое значение числа pi."""
+
+    n = 10 ** 6
+    k = 0
+    s0 = 4
+    for _ in range(n):
+        x = uniform(-1, 1)
+        y = uniform(-1, 1)
+
+        if x ** 2 + y ** 2 <= 1:
+            k += 1
+    print((k / n) * s0)
+
+
 def main():
-    password_generator_2()
+    pi_area()
+    # area_figure()
+    # password_generator_2()
     # password_generator_1()
     # secret_friend()
     # bingo()
