@@ -8,3 +8,4 @@ https://www.random.org/randomness/
 * Множество
 * Random and string
 * Кортежи
+* Decimal, fraction, complex
