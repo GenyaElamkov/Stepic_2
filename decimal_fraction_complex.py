@@ -1,11 +1,13 @@
 from decimal import Decimal
 from fractions import Fraction
-from math import factorial
+from math import factorial, gcd
 
 
+###################
 # Модуль Decimal.
+###################
 
-def decimal_1():
+def decimal_1() -> None:
     """Выводит сумму наибольшего и наименьшего Decimal числа."""
     s = '0.77 4.03 9.06 3.80 7.08 5.88 0.23 4.65 2.79 0.90 4.23 2.15 3.24 8.57 0.10 8.57 1.49 5.64 3.63 8.36 1.56 ' \
         '6.67 1.46 5.26 4.83 7.23 1.22 1.02 7.82 9.97 5.40 9.79 9.82 2.78 2.96 0.07 1.72 7.24 7.84 9.23 1.71 6.24 ' \
@@ -14,7 +16,7 @@ def decimal_1():
     print(sum((max(s), min(s))))
 
 
-def decimal_2():
+def decimal_2() -> None:
     """Вывел на первой строке сумму всех чисел, а на второй строке 5 самых больших чисел в порядке убывания,
     разделенных символом пробела."""
     s = '9.73 8.84 8.92 9.60 9.32 8.97 8.53 1.26 6.62 9.85 1.85 1.80 0.83 6.75 9.74 9.11 9.14 5.03 5.03 1.34 3.52 ' \
@@ -26,7 +28,7 @@ def decimal_2():
     print(*sorted(s, reverse=True)[:5])
 
 
-def decimal_3():
+def decimal_3() -> None:
     """Выводит сумму наибольшей и наименьшей цифры Decimal числа."""
     """
     Sample Input 1:
@@ -42,7 +44,7 @@ def decimal_3():
     print(sum((max(nums), min(nums))))
 
 
-def mathematical_expression():
+def mathematical_expression() -> None:
     """Вычисляет значение выражения."""
     d = Decimal(input())
 
@@ -50,10 +52,11 @@ def mathematical_expression():
     print(result)
 
 
-# Модуль Fraction
+#####################
+# Модуль Fraction.
+#####################
 
-
-def fraction_1():
+def fraction_1() -> None:
     """Каждого десятичного числа вывел его представление в виде обыкновенной дроби в формате."""
     numbers = ['6.34', '4.08', '3.04', '7.49', '4.45', '5.39', '7.82', '2.76', '0.71', '1.97', '2.54', '3.67', '0.14',
                '4.29', '1.84', '4.07', '7.26', '9.37', '8.11', '4.30', '7.16', '2.46', '1.27', '0.29', '5.12', '4.02',
@@ -64,7 +67,7 @@ def fraction_1():
         print(f'{n} = {Fraction(n)}')
 
 
-def fraction_2():
+def fraction_2() -> None:
     """Выводит сумму наибольшего и наименьшего числа в виде обыкновенной дроби."""
 
     s = '0.78 4.3 9.6 3.88 7.08 5.88 0.23 4.65 2.79 0.90 4.23 2.15 3.24 8.57 0.10 8.57 1.49 5.64 3.63 8.36 1.56 ' \
@@ -75,14 +78,14 @@ def fraction_2():
     print(sum([max(s), min(s)]))
 
 
-def shorten_fraction():
+def shorten_fraction() -> None:
     """Сокращает дробь и выводит ее"""
     n, d = [int(input()) for _ in range(2)]
 
     print(Fraction(n, d))
 
 
-def operations_fractions():
+def operations_fractions() -> None:
     """Вычисляет и выводит их сумму, разность, произведение и частное."""
     n1, n2 = [input() for _ in range(2)]
     print(f'{n1} + {n2} = {Fraction(n1) + Fraction(n2)}')
@@ -99,7 +102,7 @@ def operations_fractions():
     """
 
 
-def sum_fractions_1():
+def sum_fractions_1() -> None:
     """Вычисляет и выводит рациональное число, равное значению выражения."""
 
     n = int(input())
@@ -108,19 +111,49 @@ def sum_fractions_1():
     print(res)
 
 
-def sum_fractions_2():
+def sum_fractions_2() -> None:
     """Вычисляет и выводит рациональное число, равное значению выражения."""
     n = int(input())
     res = sum([Fraction(1, factorial(i)) for i in range(1, n + 1)])
     print(res)
 
 
-def young_mathematician():
+def young_mathematician() -> None:
     """Находит наибольшую правильную несократимую дробь с суммой числителя и знаменателя равной n."""
-    pass
+    n = int(input())
+    tmp = 0
+    for i in range(1, n+1):
+        for j in range(n, 0, -1):
+            if gcd(i, j) == 1 and i < j and sum([i, j]) == n:
+                if tmp < Fraction(i, j):
+                    tmp = Fraction(i, j)
+    print(tmp)
+
+
+def ordered_fractions() -> None:
+    """Выводит в порядке возрастания все несократимые дроби, заключённые между 0 и 1,
+    знаменатель которых не превосходит n."""
+
+    n = int(input())
+    arr_fraction = []
+    for i in range(1, n+1):
+        for j in range(n, 0, -1):
+            if gcd(i, j) == 1 and i < j:
+                arr_fraction.append(Fraction(i, j))
+
+    print(*sorted(arr_fraction), sep='\n')
+
+    """
+    numbers = set()
+
+    for i in range(2, int(input()) + 1):
+        for j in range(1, i):
+            numbers.add(Fraction(j, i))
+    """
 
 
 def main():
+    # ordered_fractions()
     young_mathematician()
     # sum_fractions_2()
     # sum_fractions_1()
