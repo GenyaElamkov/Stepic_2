@@ -3,9 +3,10 @@
 
 Сайт настоящих случайных чисел
 https://www.random.org/randomness/ 
-* bool
-* Словари
-* Множество
-* Random and string
-* Кортежи
-* Decimal, fraction, complex
+* [bool](https://docs.python.org/3/library/functions.html?highlight=bool#bool)
+* [Словари](https://docs.python.org/3/library/stdtypes.html?highlight=dict#dict)
+* [Множество](https://docs.python.org/3/library/stdtypes.html?highlight=set#set)
+* [Random](https://docs.python.org/3/library/random.html?highlight=random#module-random) and [string](https://docs.python.org/3/library/string.html?highlight=string#module-string)
+* [Кортежи](https://docs.python.org/3/library/stdtypes.html?highlight=tuple#tuples)
+* [Decimal](https://docs.python.org/3/library/decimal.html), [fraction](https://docs.python.org/3/library/fractions.html?highlight=fractions#module-fractions), [complex](https://docs.python.org/3/library/functions.html?highlight=complex#complex)
+* [Turtle](https://docs.python.org/3/library/turtle.html)
