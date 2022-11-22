@@ -122,7 +122,7 @@ def young_mathematician() -> None:
     """Находит наибольшую правильную несократимую дробь с суммой числителя и знаменателя равной n."""
     n = int(input())
     tmp = 0
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         for j in range(n, 0, -1):
             if gcd(i, j) == 1 and i < j and sum([i, j]) == n:
                 if tmp < Fraction(i, j):
@@ -136,7 +136,7 @@ def ordered_fractions() -> None:
 
     n = int(input())
     arr_fraction = []
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         for j in range(n, 0, -1):
             if gcd(i, j) == 1 and i < j:
                 arr_fraction.append(Fraction(i, j))
@@ -151,16 +151,44 @@ def ordered_fractions() -> None:
             numbers.add(Fraction(j, i))
     """
 
+
 ###################
 # Модуль Complex.
 ###################
 
+def operations_complex_numbers():
+    """Вычисляет и выводит их сумму, разность и произведение."""
+    n1, n2 = [input() for _ in range(2)]
+    ops = ['+', '-', '*']
+    for op in ops:
+        print(f'({n1}) {op} ({n2}) =', eval(f'({n1}){op}({n2})'))
 
+
+def complex_1():
+    """Выводит комплексное число с наибольшим модулем и сам модуль числа на отдельных строках."""
+    numbers = [3 + 4j, 3 + 1j, -7 + 3j, 4 + 8j, -8 + 10j, -3 + 2j, 3 - 2j, -9 + 9j, -1 - 1j, -1 - 10j, -20 + 15j,
+               -21 + 1j, 1j, -3 + 8j, 4 - 6j, 8 + 2j, 2 + 3j]
+
+    res = max([i for i in numbers], key=abs)
+    print(res, abs(res), sep='\n')
+
+
+def conjugate_numbers():
+    """Вычисляет и выводит значение выражения. Сопряженные числа."""
+    n = int(input())
+    z1, z2 = [complex(input()) for _ in range(2)]
+
+    z1s = z1.conjugate()
+    z2s = z2.conjugate()
+    print(z1 ** n + z2 ** n + z1s ** n + z2s ** (n + 1))
 
 
 def main():
+    conjugate_numbers()
+    # complex_1()
+    # operations_complex_numbers()
     # ordered_fractions()
-    young_mathematician()
+    # young_mathematician()
     # sum_fractions_2()
     # sum_fractions_1()
     # operations_fractions()
