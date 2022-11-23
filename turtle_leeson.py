@@ -28,13 +28,9 @@ def triangle(side) -> None:
 def square(side) -> None:
     """Рисует изображенную фигуру, состоящую из трех квадратов."""
     t.speed(5)
-    t.forward(side)
-    t.left(90)
-    t.forward(side)
-    t.left(90)
-    t.forward(side)
-    t.left(90)
-    t.forward(side)
+    for i in range(4):
+        t.forward(side)
+        t.left(90)
 
 
 def squqre_corner(side, counter) -> None:
