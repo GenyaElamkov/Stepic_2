@@ -1,5 +1,5 @@
 import turtle as t
-from random import choice
+from random import choice, randint
 
 
 def rectangle(width, height) -> None:
@@ -285,9 +285,104 @@ def draw_line():
         print(size)
 
 
+def draw_circle():
+    """Рисует изображение символа олимпиады в соответствии с образцом."""
+    color = ['blue', 'black', 'red', 'yellow', 'LightGreen']
+    t.pensize(5)
+    counter = 0
+    for i in range(2):
+        for j in range(3 - i):
+            t.pencolor(color[counter])
+            t.circle(50)
+            t.penup()
+            t.forward(100)
+            t.pendown()
+            counter += 1
+        t.penup()
+        t.goto(50, -50)
+        t.pendown()
+
+
+def draw_bear():
+    """Рисует изображение мишки в соответствии с образцом."""
+    t.speed(5)
+    [t.circle(50 * i) for i in range(1, 3)]
+    t.penup()
+    t.goto(-90, 160)
+    t.pendown()
+    for _ in range(1, 3):
+        t.circle(25)
+        t.penup()
+        t.forward(180)
+        t.pendown()
+
+    t.penup()
+    t.goto(-50, 100)
+    t.pendown()
+    for i in range(2):
+        for j in range(2):
+            if i == 1:
+                t.penup()
+                t.goto(0, 70)
+                t.pendown()
+                t.circle(10)
+                t.right(90)
+                t.forward(50)
+                t.hideturtle()
+                break
+            else:
+                t.dot(20)
+                t.penup()
+                t.forward(100)
+                t.pendown()
+
+
+def snowflakes():
+    """Случайным образом рисует снежинки разного цвета и размера в соответствии с образцом."""
+    t.Screen().setup(500, 500)
+    t.Screen().title('Снежинки')
+    t.Screen().bgcolor('cyan')
+
+    t.speed(0)
+
+    color = ['blue', 'indigo', 'pink', 'gray', 'gold']
+
+    counter = 30  # Кол-во снежинок.
+
+    for n in range(counter):
+        x = randint(-200, 200)
+        y = randint(-200, 200)
+        t.penup()
+        t.goto(x, y)
+        # print(t.pos())
+        t.pendown()
+
+        # Снежинка
+        side = randint(10, 50)
+        segment_size = side / 4
+        t.pencolor(choice(color))
+        for i in range(8):
+            # Рисуем сегмент
+            t.forward(segment_size)
+            for j in range(3):
+                t.left(45)
+                t.forward(segment_size)
+                t.backward(segment_size)
+                t.right(90)
+                t.forward(segment_size)
+                t.backward(segment_size)
+                t.left(45)
+                t.forward(segment_size)
+            t.backward(side)
+            t.left(360 / 8)
+
+
 def main():
     t.showturtle()
-    draw_line()
+    snowflakes()
+    # draw_bear()
+    # draw_circle()
+    # draw_line()
     # draw_star()
     # spiral_pattern()
     # turtle_spiral()
