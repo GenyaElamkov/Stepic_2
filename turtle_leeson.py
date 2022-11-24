@@ -1,4 +1,5 @@
 import turtle as t
+from random import choice
 
 
 def rectangle(width, height) -> None:
@@ -143,11 +144,161 @@ def pattern(side, counter) -> None:
         t.forward(side * i)
 
 
+def dotted_line(side):
+    """Рисуем пунктирную линию"""
+    size_dotted = 30
+    # t.dot(5, 'red')
+    t.shape('turtle')
+    for _ in range(side // size_dotted):
+        t.stamp()
+        t.penup()
+        t.forward(size_dotted)
+        t.pendown()
+
+
+def rectangle_dot():
+    """Прямоугольник с точкой в каждом углу"""
+
+    for i in range(1, 5):
+        t.dot(10)
+        side = 200
+        if i % 2 == 0:
+            side //= 2
+
+        t.forward(side)
+        t.left(90)
+
+
+def web(n):
+    """Рисуем паутину в соответствии с примером. Программа считывает количество лучей паутины, число n."""
+    side = 200
+    t.dot(20)
+    t.pensize(2)
+    for i in range(1, n + 1):
+        t.forward(side)
+        t.shape('triangle')
+        t.stamp()
+        t.backward(side)
+        t.left(360 / n)
+
+
+def draw_turtle(shape, side):
+    """Рисуем черепашек в соответствии с образцом."""
+    n = 12
+    # t.shapesize(5)
+    t.shape(shape)
+    t.stamp()
+    for i in range(1, n + 1):
+        t.penup()
+        t.forward(side)
+        t.pendown()
+        t.stamp()
+        t.penup()
+        t.backward(side)
+        t.left(360 / n)
+
+
+def watch_face():
+    """Рисует циферблат часов в соответствии с образцом."""
+    side = 200
+    n = 12
+    t.Screen().bgcolor('SkyBlue')
+    t.shape('turtle')
+    t.stamp()
+    t.pensize(5)
+    for i in range(1, n + 1):
+        t.penup()
+        t.forward(side - 40)
+        t.pendown()
+        t.forward(20)
+        t.penup()
+        t.forward(20)
+        t.pendown()
+        t.stamp()
+        t.penup()
+        t.backward(side)
+        t.left(360 / n)
+
+
+def turtle_spiral():
+    """Рисует черепашью спираль в соответствии с образцом."""
+    counter_turtle = 50
+    t.Screen().bgcolor('LightGreen')
+    t.shape('turtle')
+    t.stamp()
+    for i in range(1, counter_turtle + 1):
+        t.penup()
+        t.forward(2 * i)
+        t.pendown()
+        t.left(22)
+        t.stamp()
+
+
+def spiral_pattern():
+    """Рисует узор в соответствии с образцом."""
+    line = 5
+    color = ['red', 'blue', 'yellow', 'green', 'purple', 'orange']
+
+    for i in range(1, 45):
+        t.pencolor(choice(color))
+        t.pensize(i // 3)
+        t.forward(line)
+        t.left(45)
+        line += 2
+
+
+def draw_star():
+    """
+    Рисует звезду, показанную на рисунке. Такую звезду можно создать из двух треугольников.
+    Однако их невозможно нарисовать непрерывной линией, поэтому перо нужно будет поднять для перехода
+    ко второму треугольнику.
+     """
+    t.speed(0)
+    side = 200
+    for i in range(3):
+        t.forward(side)
+        t.left(120)
+    t.penup()
+    t.goto(0, 120)
+    t.pendown()
+    for i in range(3):
+        t.forward(side)
+        t.right(120)
+
+
+def draw_line():
+    """Рисует изображение в соответствии с образцом."""
+    n = 5
+    size = 200
+
+    temp = 0
+    for _ in range(n):
+        t.pencolor('red')
+        t.penup()
+        t.goto(0, size)
+        t.pendown()
+        t.dot(10)
+        t.goto(size / 2 - temp, 0)
+        t.pencolor('blue')
+        t.dot(10)
+        temp += (size / n)
+        print(size)
+
+
 def main():
     t.showturtle()
-    pattern(10, 60)
+    draw_line()
+    # draw_star()
+    # spiral_pattern()
+    # turtle_spiral()
+    # watch_face()
+    # draw_turtle()
+    # web(8)
+    # rectangle_dot()
+    # dotted_line(200)
+    # pattern(10, 60)
     # set_counter_pattern_squares(50, 10)
-    # pattern_squares()
+    # pattern_squares(200)
     # five_pointed_star(200)
     # rays_star(200)
     # snowflake(200, 10)
