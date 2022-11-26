@@ -377,9 +377,99 @@ def snowflakes():
             t.left(360 / 8)
 
 
+def draw_home():
+    """Рисует изображение домика по образцу."""
+
+    side = 200
+    tim_1, tim_2 = [t.Turtle() for _ in range(2)]
+    tim_1.hideturtle()
+    tim_2.hideturtle()
+
+    def draw_tingle(tim_1, side):
+        tim_1.fillcolor('black')
+        tim_1.begin_fill()
+        for i in range(4):
+            if i == 0 or i == 3:
+                tim_1.forward(side / 2)
+            else:
+                tim_1.forward(side)
+            tim_1.left(120)
+        tim_1.end_fill()
+
+    def draw_squre(tim_2, side):
+
+        tim_2.fillcolor('yellow')
+        tim_2.begin_fill()
+        tim_2.penup()
+        tim_2.goto((side / 2) - 20, 0)
+        tim_2.pendown()
+
+        for i in range(3):
+            tim_2.right(90)
+            if i == 1:
+                tim_2.forward(side - 40)
+            else:
+                tim_2.forward(side - 60)
+        tim_2.end_fill()
+
+    draw_tingle(tim_1, side)
+    draw_squre(tim_2, side)
+
+
+def draw_rectangle_traffic_lights():
+    """Рисуем прямоугольник."""
+    rectangle = t.Turtle()
+    rectangle.hideturtle()
+    rectangle.speed(5)
+    rectangle.fillcolor('black')
+    rectangle.begin_fill()
+    for i in range(4):
+        if i == 1 or i == 3:
+            rectangle.forward(300)
+        else:
+            rectangle.forward(100)
+        rectangle.left(90)
+    rectangle.end_fill()
+
+
+def draw_circle_traffic_lights(turtles):
+    """Рисуем круг."""
+    head = 30
+    for turtle in turtles:
+        turtle.penup()
+        turtle.goto(50, head)
+        turtle.pendown()
+        turtle.begin_fill()
+        turtle.circle(30)
+        turtle.end_fill()
+        head += 90
+
+
+def traffic_lights():
+    """Рисует изображение светофора по образцу."""
+    draw_rectangle_traffic_lights()
+
+    color = ['green', 'yellow', 'red']
+
+    turtles = []
+    for i in range(3):
+        turt = t.Turtle()
+        turt.speed(0)
+        turt.hideturtle()
+        turt.pencolor(color[i])
+        turt.fillcolor(color[i])
+        turt.pensize(3)
+        turtles.append(turt)
+
+    draw_circle_traffic_lights(turtles)
+
+
 def main():
     t.showturtle()
-    snowflakes()
+    t.hideturtle()
+    traffic_lights()
+    # draw_home()
+    # snowflakes()
     # draw_bear()
     # draw_circle()
     # draw_line()
