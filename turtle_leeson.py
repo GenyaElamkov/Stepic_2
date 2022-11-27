@@ -1,5 +1,5 @@
 import turtle as t
-from random import choice, randint
+from random import choice, randint, randrange
 
 
 def rectangle(width, height) -> None:
@@ -512,10 +512,46 @@ def optical_illusion():
 """
 
 
+def draws_rainbow_image():
+
+    t.Screen().colormode(255)
+    t.tracer(25, 0)
+    circ = t.Turtle()
+    circ.hideturtle()
+    circ.speed(0)
+
+    for i in range(0, 201, 20):
+        circ.penup()
+        circ.goto(0, -200 + i)
+        circ.pendown()
+        circ.color(randrange(256), randrange(256), randrange(256))
+        circ.begin_fill()
+        circ.pencolor('black')
+        circ.circle(200-i)
+        circ.end_fill()
+
+
+def draws_image_crescent_moon():
+    """Рисует изображение полумесяца."""
+    t.Screen().bgcolor('blue')
+    t.speed(0)
+    t.tracer(25, 0)
+    color = ['yellow', 'blue']
+    for i in range(0, 51, 50):
+        t.goto(0 + i, -100)
+        t.color(color[i//50])
+        t.begin_fill()
+        t.circle(200)
+        t.end_fill()
+
+
+
 def main():
     t.showturtle()
     t.hideturtle()
-    optical_illusion()
+    draws_image_crescent_moon()
+    # draws_rainbow_image()
+    # optical_illusion()
     # traffic_lights()
     # draw_home()
     # snowflakes()
