@@ -559,6 +559,7 @@ def animated_image_phases_moon():
         moon.dot(200, 'blue')
 
 
+
 def test():
     t.Screen().setup(500, 500)
     t.Screen().bgcolor('grey')
