@@ -513,7 +513,6 @@ def optical_illusion():
 
 
 def draws_rainbow_image():
-
     t.Screen().colormode(255)
     t.tracer(25, 0)
     circ = t.Turtle()
@@ -527,7 +526,7 @@ def draws_rainbow_image():
         circ.color(randrange(256), randrange(256), randrange(256))
         circ.begin_fill()
         circ.pencolor('black')
-        circ.circle(200-i)
+        circ.circle(200 - i)
         circ.end_fill()
 
 
@@ -539,17 +538,40 @@ def draws_image_crescent_moon():
     color = ['yellow', 'blue']
     for i in range(0, 51, 50):
         t.goto(0 + i, -100)
-        t.color(color[i//50])
+        t.color(color[i // 50])
         t.begin_fill()
         t.circle(200)
         t.end_fill()
 
 
+def animated_image_phases_moon():
+    """Рисует анимированное изображение фаз луны."""
+    t.hideturtle()
+    t.Screen().bgcolor('blue')
+    t.dot(200, 'orange')
+    moon = t.Turtle()
+    moon.hideturtle()
+    # moon.tracer(25, 0)
+    moon.up()
+    for i in range(200, -201, -1):
+        moon.goto(i, 0)
+        moon.clear()
+        moon.dot(200, 'blue')
+
+def test():
+    t.Screen().setup(500, 500)
+    t.Screen().bgcolor('grey')
+    text = t.textinput(title='Вопрос', prompt='Ваше имя:')
+    num = t.numinput(title='Вопрос', prompt='Ваш возраст:')
+    print(text, num)
+
 
 def main():
     t.showturtle()
     t.hideturtle()
-    draws_image_crescent_moon()
+    # test()
+    animated_image_phases_moon()
+    # draws_image_crescent_moon()
     # draws_rainbow_image()
     # optical_illusion()
     # traffic_lights()
