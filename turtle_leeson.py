@@ -1,5 +1,6 @@
 import turtle as t
 from random import choice, randint, randrange
+from math import radians, tan
 
 
 def rectangle(width, height) -> None:
@@ -608,8 +609,39 @@ def regular_polygon():
     """
     Рисует изображение правильных многоугольников по образцу.
     Многоугольники должны иметь разный цвет.
+    n - кол-во сторон.
+    a - длина сторон.
     """
-    pass
+
+    t.Screen().colormode(255)
+    t.pensize(4)
+
+    def polygon(n, a, x, y):
+        angle = ((n - 2) * 180) / n
+        s = (n * a ** 2) / 4 * tan(radians(angle))
+        # size = (square * 4 * m.tan(m.radians(180 / n)) / n) ** 0.5
+        t.hideturtle()
+        t.up()
+        t.goto(x, y)
+        t.down()
+
+        for i in range(n):
+            t.forward(a)
+            t.right(180 - angle)
+
+    def play(counter):
+        a = 50
+        for i in range(int(counter / 5)):
+            for j in range(int(counter / 5)):
+                n = randrange(3, 7)
+                color = (randrange(256), randrange(256), randrange(256))
+                t.color(color)
+                t.pencolor('black')
+                t.begin_fill()
+                polygon(n, a, j + (j * a * 2), i + (i * a * 2))
+                t.end_fill()
+
+    play(25)
 
 
 def main():
