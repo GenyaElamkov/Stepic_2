@@ -559,7 +559,6 @@ def animated_image_phases_moon():
         moon.dot(200, 'blue')
 
 
-
 def test():
     t.Screen().setup(500, 500)
     t.Screen().bgcolor('grey')
@@ -568,11 +567,49 @@ def test():
     print(text, num)
 
 
+def set_stars():
+    """
+    Рисует изображение по образцу. Звезды должны быть рассыпаны случайно,
+    иметь разный размер и цвет.
+    """
+    t.Screen().setup(700, 500)
+    t.Screen().colormode(255)
+    t.tracer(25, 0)
+    t.speed(0)
+    t.up()
+
+    def star(size, x, y):
+        t.hideturtle()
+        t.goto(x, y)
+        t.setheading(randrange(360))  # Поворот звезды.
+        for _ in range(5):
+            t.forward(size)
+            t.right(144)
+
+    def play(counter):
+        for _ in range(counter):
+            color = (randrange(256), randrange(256), randrange(256))
+            t.color(color)
+            t.pencolor(color)
+            t.begin_fill()
+
+            x = randint(-330, 330)
+            y = randint(-230, 230)
+            size = randint(5, 30)  # Размер звезды.
+
+            star(size, x, y)
+            t.end_fill()
+
+    counter = 80  # Кол-во звезд.
+    play(counter)
+
+
 def main():
     t.showturtle()
     t.hideturtle()
+    set_stars()
     # test()
-    animated_image_phases_moon()
+    # animated_image_phases_moon()
     # draws_image_crescent_moon()
     # draws_rainbow_image()
     # optical_illusion()
