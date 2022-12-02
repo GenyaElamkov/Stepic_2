@@ -604,10 +604,19 @@ def set_stars():
     play(counter)
 
 
+def regular_polygon():
+    """
+    Рисует изображение правильных многоугольников по образцу.
+    Многоугольники должны иметь разный цвет.
+    """
+    pass
+
+
 def main():
     t.showturtle()
     t.hideturtle()
-    set_stars()
+    regular_polygon()
+    # set_stars()
     # test()
     # animated_image_phases_moon()
     # draws_image_crescent_moon()
