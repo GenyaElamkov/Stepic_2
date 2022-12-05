@@ -616,10 +616,11 @@ def regular_polygon():
     t.Screen().colormode(255)
     t.pensize(4)
 
-    def polygon(n, a, x, y):
+    def polygon(n, size, x, y):
         angle = ((n - 2) * 180) / n
-        s = (n * a ** 2) / 4 * tan(radians(angle))
-        # size = (square * 4 * m.tan(m.radians(180 / n)) / n) ** 0.5
+
+        a = (size * 4 * tan(radians(180 / n)) / n) ** 0.5
+
         t.hideturtle()
         t.up()
         t.goto(x, y)
@@ -630,7 +631,8 @@ def regular_polygon():
             t.right(180 - angle)
 
     def play(counter):
-        a = 50
+        line = 50
+        size = 1000
         for i in range(int(counter / 5)):
             for j in range(int(counter / 5)):
                 n = randrange(3, 7)
@@ -638,16 +640,83 @@ def regular_polygon():
                 t.color(color)
                 t.pencolor('black')
                 t.begin_fill()
-                polygon(n, a, j + (j * a * 2), i + (i * a * 2))
+                polygon(n, size, j + (j * line * 2), i + (i * line * 2))
                 t.end_fill()
 
     play(25)
 
 
+def chess():
+    """Рисует изображение шахматной доски по образцу."""
+    t.Screen().setup(520, 520)
+    t.speed(0)
+    turt = t.Turtle()
+    turt.speed(0)
+    turt.pensize(4)
+    turt.up()
+    turt.goto(-250, 250)
+    turt.down()
+
+    for _ in range(4):
+        turt.forward(500)
+        turt.right(90)
+
+    color = ['black', 'white']
+
+    def squre(color):
+        t.color(color)
+        t.begin_fill()
+        for _ in range(4):
+            t.forward(100)
+            t.right(90)
+        t.end_fill()
+
+    def play():
+        for i in range(5):
+            for j in range(5):
+                t.up()
+                if i % 2 == 0:
+                    if j % 2 == 0:
+                        t.goto(-250 + (j * 100), 250 - (i * 100))
+                        squre(color[0])
+                else:
+                    if j % 2 == 1:
+                        t.goto(-250 + (j * 100), 250 - (i * 100))
+                        squre(color[0])
+
+    play()
+
+
+def compass():
+    """Рисует изображение компаса по образцу."""
+
+    t.up()
+    t.goto(0, -100)
+    t.down()
+    t.pensize(4)
+    t.circle(100)
+    t.up()
+    t.goto(0, 0)
+    t.down()
+
+    sides_light = ['Восток', 'Север', 'Запад', 'Юг']
+    size = 250
+    for sides in sides_light:
+        t.forward(size)
+        t.up()
+        t.forward(40)
+        t.write(sides, align='center', font=('Arial', 16, 'normal'))
+        t.backward(size + 40)
+        t.left(90)
+        t.down()
+
+
 def main():
     t.showturtle()
     t.hideturtle()
-    regular_polygon()
+    compass()
+    # chess()
+    # regular_polygon()
     # set_stars()
     # test()
     # animated_image_phases_moon()
