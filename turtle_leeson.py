@@ -711,10 +711,50 @@ def compass():
         t.down()
 
 
+def solar_system():
+    """Рисует солнечную систему по образцу."""
+    t.Screen().setup(1000, 500)
+    t.Screen().bgcolor('black')
+
+    def planet(name, size, color, x, y):
+        sun = t.Turtle()
+        sun.hideturtle()
+        sun.speed(0)
+        sun.up()
+        sun.goto(x, y)
+        sun.down()
+        sun.color(color)
+        sun.begin_fill()
+        sun.circle(size)
+        sun.end_fill()
+        sun.up()
+        sun.goto(x, y-20)
+        sun.down()
+        sun.write(name, align='center')
+
+    planet('Солнце', 500, 'yellow', -800, -450)
+    planet('Меркурий', 10, 'grey', -250, -10)
+    planet('Венера', 15, 'orange', -200, -15)
+    planet('Земля', 15, 'blue', -150, -15)
+    planet('Марс', 10, 'red', -100, -10)
+    planet('Юпитер', 100, 'grey', 50, -100)
+
+    d = {
+        'Солнце': {
+            'size': 500,
+            'x': -800,
+            'y': -450},
+        'Меркурий': {
+            'size': 10,
+            'x': -250,
+            'y': -10},
+    }
+
 def main():
     t.showturtle()
     t.hideturtle()
-    compass()
+    solar_system()
+    # compass()
     # chess()
     # regular_polygon()
     # set_stars()
