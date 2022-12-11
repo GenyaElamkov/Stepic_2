@@ -713,8 +713,20 @@ def compass():
 
 def solar_system():
     """Рисует солнечную систему по образцу."""
-    t.Screen().setup(1000, 500)
+    t.Screen().setup(1200, 500)
     t.Screen().bgcolor('black')
+
+    def ellipse(rad):
+        ell = t.Turtle()
+        ell.pensize(4)
+        ell.up()
+        ell.goto(0, -90)
+        ell.down()
+        for i in range(2):
+            ell.pencolor('white')
+            ell.circle(rad - 90, 90)
+            ell.circle(rad // 2 - 90, 90)
+
 
     def planet(name, size, color, x, y):
         sun = t.Turtle()
@@ -723,32 +735,36 @@ def solar_system():
         sun.up()
         sun.goto(x, y)
         sun.down()
+
+        if name == 'Сатурн':
+            ellipse(size*2.7)
+
         sun.color(color)
         sun.begin_fill()
         sun.circle(size)
         sun.end_fill()
+        # text
         sun.up()
-        sun.goto(x, y-20)
+        sun.goto(x, y - 30)
         sun.down()
-        sun.write(name, align='center')
+        sun.color('white')
+        sun.write(name, align='center', font=("Arial", 10, "normal"))
 
-    planet('Солнце', 500, 'yellow', -800, -450)
-    planet('Меркурий', 10, 'grey', -250, -10)
-    planet('Венера', 15, 'orange', -200, -15)
-    planet('Земля', 15, 'blue', -150, -15)
-    planet('Марс', 10, 'red', -100, -10)
-    planet('Юпитер', 100, 'grey', 50, -100)
+    planet_dic = {'Солнце': {'size': 500, 'color': 'yellow', 'x': -1000, 'y': -450},
+                  'Меркурий': {'size': 10, 'color': 'grey', 'x': -450, 'y': -10},
+                  'Венера': {'size': 15, 'color': 'orange', 'x': -400, 'y': -15},
+                  'Земля': {'size': 15, 'color': 'blue', 'x': -350, 'y': -15},
+                  'Марс': {'size': 10, 'color': 'red', 'x': -300, 'y': -10},
+                  'Юпитер': {'size': 100, 'color': 'grey', 'x': -150, 'y': -100},
+                  'Сатурн': {'size': 90, 'color': 'yellow', 'x': 60, 'y': -80},
+                  'Уран': {'size': 80, 'color': 'cyan', 'x': 250, 'y': -80},
+                  'Нептун': {'size': 80, 'color': 'DarkBlue', 'x': 430, 'y': -80},
+                  'Плутоний': {'size': 5, 'color': 'grey', 'x': 540, 'y': -5},
+                  }
 
-    d = {
-        'Солнце': {
-            'size': 500,
-            'x': -800,
-            'y': -450},
-        'Меркурий': {
-            'size': 10,
-            'x': -250,
-            'y': -10},
-    }
+    for key, val in planet_dic.items():
+        planet(key, val['size'], val['color'], val['x'], val['y'])
+
 
 def main():
     t.showturtle()
