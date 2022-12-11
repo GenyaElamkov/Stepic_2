@@ -807,6 +807,7 @@ def high_rise_building():
     t.Screen().bgcolor('#003153')
     t.speed(0)
     t.delay(0)
+
     def drawing_building_outlines():
         """Рисует контуры зданий."""
         b = t.Turtle()
@@ -900,10 +901,49 @@ def heart():
     text.color('#FF00FF')
     text.write('ТЕБЯ', align='center', font=("Arial", 100, "bold"))
 
+
+def stars_by_click():
+    """
+    Рисует по нажатию на левую кнопку мыши рисует звезду в месте клика.
+    Фон изображения должен быть черным, при этом звезды могут иметь разные размеры,
+    цвета и иметь разное количество сторон.
+    """
+
+    def star(x, y, size, color):
+        """Рисует звезду"""
+        s = t.Turtle()
+        s.speed(0)
+        s.color(color)
+        s.hideturtle()
+        s.up()
+        s.goto(x, y)
+        s.down()
+        s.setheading(randrange(360))
+        s.begin_fill()
+        n = randrange(5, 21, 2)
+        for _ in range(n):
+            s.forward(size)
+            s.right(180-180/n)
+        s.end_fill()
+
+    def on_click(x, y):
+        """Активация звезды при нажатие левой кнопки мыщи"""
+        size = randint(10, 50)
+        color = (randrange(256), randrange(256), randrange(256))
+        star(x, y, size, color)
+
+    t.Screen().bgcolor('black')
+    t.Screen().colormode(255)
+    t.delay(0)
+    t.Screen().onclick(on_click)
+    t.Screen().listen()
+
+
 def main():
     t.showturtle()
     t.hideturtle()
-    heart()
+    stars_by_click()
+    # heart()
     # high_rise_building()
     # stop()
     # solar_system()
@@ -944,7 +984,8 @@ def main():
     # square_corner(200,  8, 45)
     # triangle(200)
     # rectangle(200, 100)
-    t.exitonclick()
+    # t.exitonclick()
+    t.mainloop()
 
 
 if __name__ == '__main__':
