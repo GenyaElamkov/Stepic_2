@@ -766,10 +766,46 @@ def solar_system():
         planet(key, val['size'], val['color'], val['x'], val['y'])
 
 
+def stop():
+    """ Рисует знак STOP."""
+    t.Screen().setup(800, 800)
+    t.Screen().bgcolor('white')
+    t.speed(0)
+
+    def polygon(n, a, x, y):
+        """
+        Рисует многоугольник.
+        n - кол-во сторон.
+        a - длина стороны.
+        x, y - координаты.
+        """
+        angle = ((n - 2) * 180) / n
+        t.hideturtle()
+        t.up()
+        t.goto(x, y)
+        t.down()
+        t.pensize(10)
+
+        for _ in range(n):
+            t.forward(a)
+            t.right(180 - angle)
+
+    for i in range(0, 20, 10):
+        if i == 10:
+            t.color('red')
+            t.begin_fill()
+        polygon(8, 200-(i*2), -100+i, 300-(i*2))
+        t.end_fill()
+    t.goto(0, -15)
+    t.color('white')
+    t.write('STOP', align='center', font=("Arial", 110, "bold"))
+    #
+
 def main():
     t.showturtle()
     t.hideturtle()
-    solar_system()
+    stop()
+    # solar_system()
     # compass()
     # chess()
     # regular_polygon()
