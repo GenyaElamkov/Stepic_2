@@ -1,6 +1,7 @@
+import time
 import turtle as t
 from random import choice, randint, randrange, sample
-from math import radians, tan
+from math import radians, tan, sin, cos, pi
 
 
 def rectangle(width, height) -> None:
@@ -869,10 +870,41 @@ def high_rise_building():
     drawing_building_outlines()
 
 
+def heart():
+    """Рисует изображение сердца."""
+    t.Screen().setup(500, 700)
+    t.Screen().bgcolor('cyan')
+    t.delay(5)
+    text = t.Turtle()
+    text.hideturtle()
+    text.color('orange')
+    text.up()
+    text.goto(0, 50)
+    text.down()
+    text.write('Я', align='center', font=("Arial", 200, "bold"))
+    h = t.Turtle()
+    h.color('red')
+    h.pensize(4)
+    h.begin_fill()
+    a = 2 * pi
+    t1 = 0
+    while t1 < a:
+        x = 128 * sin(t1) ** 3
+        y = 8 * (13 * cos(t1) - 5 * cos(2 * t1) - 2 * cos(3 * t1) - cos(4 * t1) - 5)
+        h.goto(x, y)
+        t1 += 0.01
+    h.end_fill()
+    text.up()
+    text.goto(0, -330)
+    text.down()
+    text.color('#FF00FF')
+    text.write('ТЕБЯ', align='center', font=("Arial", 100, "bold"))
+
 def main():
     t.showturtle()
     t.hideturtle()
-    high_rise_building()
+    heart()
+    # high_rise_building()
     # stop()
     # solar_system()
     # compass()
