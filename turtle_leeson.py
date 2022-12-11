@@ -1,5 +1,5 @@
 import turtle as t
-from random import choice, randint, randrange
+from random import choice, randint, randrange, sample
 from math import radians, tan
 
 
@@ -727,7 +727,6 @@ def solar_system():
             ell.circle(rad - 90, 90)
             ell.circle(rad // 2 - 90, 90)
 
-
     def planet(name, size, color, x, y):
         sun = t.Turtle()
         sun.hideturtle()
@@ -737,7 +736,7 @@ def solar_system():
         sun.down()
 
         if name == 'Сатурн':
-            ellipse(size*2.7)
+            ellipse(size * 2.7)
 
         sun.color(color)
         sun.begin_fill()
@@ -794,17 +793,87 @@ def stop():
         if i == 10:
             t.color('red')
             t.begin_fill()
-        polygon(8, 200-(i*2), -100+i, 300-(i*2))
+        polygon(8, 200 - (i * 2), -100 + i, 300 - (i * 2))
         t.end_fill()
     t.goto(0, -15)
     t.color('white')
     t.write('STOP', align='center', font=("Arial", 110, "bold"))
-    #
+
+
+def high_rise_building():
+    """ Рисует силуэты многоэтажек."""
+    t.Screen().setup(700, 700)
+    t.Screen().bgcolor('#003153')
+    t.speed(0)
+    t.delay(0)
+    def drawing_building_outlines():
+        """Рисует контуры зданий."""
+        b = t.Turtle()
+        b.hideturtle()
+        x, y = -350, -350
+        b.up()
+        b.goto(x, y)
+        b.down()
+        b.color('blue')
+
+        dividers = sorted(sample(range(100, 700), 5 - 1))
+        lenght = [a - b for a, b in zip(dividers + [700], [0] + dividers)]
+
+        for i in range(5):
+            b.begin_fill()
+            for j in range(4):
+                b.forward(lenght[i])
+                b.left(90)
+
+                if j % 2 == 0:
+                    b.forward(lenght[i])
+            b.end_fill()
+
+            position = b.position()
+            for _ in range(randint(0, 10)):
+                drawing_multiple_windows_into_buildings(position, lenght[i])
+
+            b.forward(lenght[i])
+
+    def drawing_multiple_windows_into_buildings(position, a):
+        """Рисует несколько окон в зданиях."""
+        w = t.Turtle()
+        w.hideturtle()
+        w.color('yellow')
+        w.up()
+        pos_x = int(position[0])
+        pos_y = int(position[1])
+        x = randint(pos_x + 5, pos_x + a - 10)
+        y = randint(pos_y + 5, pos_y + a + 10)
+        w.goto(x, y)
+
+        w.down()
+        w.begin_fill()
+        for i in range(4):
+            w.forward(10)
+            w.left(90)
+        w.end_fill()
+
+    def drawing_randomly_scattered_stars():
+        """Рисует случайно разбросанные звезды в виде точек."""
+        d = t.Turtle()
+        d.hideturtle()
+        d.speed(0)
+        for i in range(50):
+            d.dot(randint(5, 10), 'yellow')
+            d.up()
+            d.goto(randint(-350, 350), randint(-320, 350))
+            d.down()
+
+    drawing_randomly_scattered_stars()
+    drawing_building_outlines()
+
 
 def main():
     t.showturtle()
     t.hideturtle()
-    stop()
+    high_rise_building()
+    # stop()
     # solar_system()
     # compass()
     # chess()
