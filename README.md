@@ -10,3 +10,4 @@ https://www.random.org/randomness/
 * [Кортежи](https://docs.python.org/3/library/stdtypes.html?highlight=tuple#tuples)
 * [Decimal](https://docs.python.org/3/library/decimal.html), [fraction](https://docs.python.org/3/library/fractions.html?highlight=fractions#module-fractions), [complex](https://docs.python.org/3/library/functions.html?highlight=complex#complex)
 * [Turtle](https://digitology.tech/docs/python_3/library/turtle.html#module-turtle)
+* [Функции](https://habr.com/ru/company/ruvds/blog/515678/)
