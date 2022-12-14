@@ -2,10 +2,11 @@ import math
 
 
 def main1():
-    numbers = (2, 3, 5, 7, -11, 13, 17, 19, 23, 29, 31, -6, 41, 43, 47, 53, 59, 61, -96, 71, 1000, -1)
+    numbers = (2, 3, 5, 7, -11, 13, 17, 19, 23, 29, 31, -
+               6, 41, 43, 47, 53, 59, 61, -96, 71, 1000, -1)
     res = numbers[0]
-    for i in range(len(numbers)-1):
-        res *= numbers[i+1]
+    for i in range(len(numbers) - 1):
+        res *= numbers[i + 1]
     print(res)
 
     res = math.prod(numbers)
@@ -13,7 +14,8 @@ def main1():
 
 
 def main2():
-    numbers = ((10, 10, 10, 12), (30, 45, 56, 45), (81, 80, 39, 32), (1, 2, 3, 4), (90, 10))
+    numbers = ((10, 10, 10, 12), (30, 45, 56, 45),
+               (81, 80, 39, 32), (1, 2, 3, 4), (90, 10))
 
     print([sum(num) / len(num) for num in numbers])
 

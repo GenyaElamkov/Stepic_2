@@ -30,7 +30,10 @@ def mean(*args):
     переданных в нее числовых (int или float) аргументов.
     """
 
-    arr = [arg for arg in args if type(arg) == int or type(arg) == float]
+    arr = [
+        arg for arg in args if isinstance(
+            arg, int) or isinstance(
+            arg, float)]
     if not arr:
         return 0.0
     return sum(arr) / len(arr)
@@ -59,7 +62,7 @@ def print_products(*args):
     """
     counter = 0
     for product in args:
-        if type(product) == str and product:
+        if isinstance(product, str) and product:
             counter += 1
             print(f'{counter}) {product}')
 
@@ -80,7 +83,12 @@ def info_kwargs(**kwargs):
 
 
 def main():
-    print(info_kwargs(first_name='Timur', last_name='Guev', age=28, job='teacher'))
+    print(
+        info_kwargs(
+            first_name='Timur',
+            last_name='Guev',
+            age=28,
+            job='teacher'))
     # print_products('Бананы', [1, 2], ('Stepik',), 'Яблоки', '', 'Макароны', 5, True)
     # print(greet('Timur'))
     # print(mean(-1, 2, 3, 10, ('5')))
