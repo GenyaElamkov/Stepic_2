@@ -1,3 +1,6 @@
+from math import sqrt
+
+
 def matrix(n=1, m=None, value=0):
     """
     Cоздает, заполняет и возвращает матрицу заданного размера.
@@ -96,16 +99,17 @@ def get_min_max(numbers):
     print(max(numbers, key=average))
 
 
-def mean():
-    pass
+def mean(pointer):
+    return sqrt(pointer[0] ** 2 + pointer[1] ** 2)
 
 
+# [(0, 0), (0, 1), (-1, 1), (2, 0), (3, 0), (-1, 3), (-3, 2), (4, 3), (3, 6), (5, 6), (-9, 1), (8, 8), (12, 0)]
 def sort_numbers(points):
     """
     Программу, которая сортирует список points координат точек плоскости в соответствии с расстоянием от
     начала координат (точки (0;0)). Программа должна вывести отсортированный список.
     """
-    pass
+    print(sorted(points, key=mean))
 
 
 def main():
