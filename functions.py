@@ -82,13 +82,47 @@ def info_kwargs(**kwargs):
     # return {k: v for k, v in sorted(kwargs.items())}
 
 
+def average(pointer):
+    # return sum([pointer[i] for i in range(len(pointer))]) / len(pointer)
+    return sum(pointer) / len(pointer)
+
+
+def get_min_max(numbers):
+    """
+    Программу, которая с помощью встроенных функций min() и max() выводит те кортежи (каждый на отдельной строке),
+    которые имеют минимальное и максимальное среднее арифметическое значение элементов.
+    """
+    print(min(numbers, key=average))
+    print(max(numbers, key=average))
+
+
+def mean():
+    pass
+
+
+def sort_numbers(points):
+    """
+    Программу, которая сортирует список points координат точек плоскости в соответствии с расстоянием от
+    начала координат (точки (0;0)). Программа должна вывести отсортированный список.
+    """
+    pass
+
+
 def main():
-    print(
-        info_kwargs(
-            first_name='Timur',
-            last_name='Guev',
-            age=28,
-            job='teacher'))
+    points = [(-1, 1), (5, 6), (12, 0), (4, 3), (0, 1), (-3, 2), (0, 0), (-1, 3), (2, 0), (3, 0), (-9, 1), (3, 6),
+              (8, 8)]
+
+    sort_numbers(points)
+    # numbers = [(10, 10, 10), (30, 45, 56), (81, 39), (1, 2, 3), (12,), (-2, -4, 100), (1, 2, 99), (89, 9, 34),
+    #            (10, 20, 30, -2), (50, 40, 50), (34, 78, 65), (-5, 90, -1, -5), (1, 2, 3, 4, 5, 6), (-9, 8, 4),
+    #            (90, 1, -45, -21)]
+    # get_min_max(numbers)
+    # print(
+    #     info_kwargs(
+    #         first_name='Timur',
+    #         last_name='Guev',
+    #         age=28,
+    #         job='teacher'))
     # print_products('Бананы', [1, 2], ('Stepik',), 'Яблоки', '', 'Макароны', 5, True)
     # print(greet('Timur'))
     # print(mean(-1, 2, 3, 10, ('5')))
