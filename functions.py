@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt, sin
 
 
 def matrix(n=1, m=None, value=0):
@@ -149,8 +149,80 @@ def sort_it_as_you_want():
     [print(*s) for s in sorted(athletes, key=compare(n))]
 
 
+def square(n):
+    return n ** 2
+
+
+def cube(n):
+    return n ** 3
+
+
+def root(n):
+    return n ** 0.5
+
+
+def module(n):
+    return abs(n)
+
+
+def sine(n):
+    return sin(n)
+
+
+def mathematical_functions():
+    """
+    Программа, которая принимает число и название функции,
+    а выводит результат применения функции к данному числу.
+    """
+    n = int(input())
+    name_func = input()
+
+    commands = {'квадрат': square, 'куб': cube, 'корень': root, 'модуль': module, 'синус': sine}
+    print(commands[name_func](n))
+
+    """
+    def pwr(p):
+        def numpower(n):
+            return n**p
+        return numpower
+
+    commands = {"квадрат": pwr(2), "куб": pwr(3), "корень": pwr(0.5), "модуль": abs, "синус": math.sin}
+    """
+
+
+def sow(num):
+    # resoult = 0
+    # while num != 0:
+    #     tmp = num % 10
+    #     num //= 10
+    #     resoult += tmp
+    # return resoult
+    return sum(map(int, num))
+
+
+def interesting_sorting_1():
+    """
+    Программа сортировки списка чисел в порядке неубывания суммы их цифр.
+    При этом, если два числа имеют одинаковую сумму цифр, следует сохранить
+    их взаиморасположение в начальном списке.
+    """
+    # num_list = [int(num) for num in input().split()]
+    print(*sorted(input().split(), key=sow))
+
+
+def interesting_sorting_2():
+    """
+    Программа сортировки списка чисел в порядке неубывания суммы их цифр.
+    При этом, если у двух чисел одинаковая сумма цифр, их следует вывести в порядке неубывания.
+    """
+    pass
+
+
 def main():
-    sort_it_as_you_want()
+    interesting_sorting_2()
+    # interesting_sorting_1()
+    # mathematical_functions()
+    # sort_it_as_you_want()
 
     # numbers = [(10, 10, 10), (30, 45, 56), (81, 80, 39), (1, 2, 3), (12, 45, 67), (-2, -4, 100), (1, 2, 99),
     #            (89, 90, 34), (10, 20, 30), (50, 40, 50), (34, 78, 65), (-5, 90, -1)]
