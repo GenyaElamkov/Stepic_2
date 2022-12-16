@@ -210,12 +210,27 @@ def interesting_sorting_1():
     print(*sorted(input().split(), key=sow))
 
 
+def sorting_sum(text):
+    # text = [int(n) for n in text]
+    return sum(map(int, text))
+
+
 def interesting_sorting_2():
     """
     Программа сортировки списка чисел в порядке неубывания суммы их цифр.
     При этом, если у двух чисел одинаковая сумма цифр, их следует вывести в порядке неубывания.
     """
-    pass
+    text = sorted(input().split(), key=int)
+    print(*sorted(text, key=sorting_sum))
+
+    """
+    def comparator(n):
+        return sum([int(i) for i in str(n)]), n
+    
+    numbers = [int(i) for i in input().split()]
+    
+    print(*sorted(numbers, key=comparator))
+    """
 
 
 def main():
