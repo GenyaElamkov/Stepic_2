@@ -261,6 +261,11 @@ def filter(function, items):
             result.append(item)
     return result
 
+def select_num(num):
+    return num % 5 == 2 and len(str(num)) == 3
+
+def get_cube(num):
+    return num**3
 
 def selects_three_digit_numbers():
     """
@@ -273,6 +278,9 @@ def selects_three_digit_numbers():
                98, 530, 1013, 898, 669, 105, 130, 1363, 947, 72, 1278, 166, 904, 349, 831, 1207, 1496, 370, 725, 926,
                175, 959, 1282, 336, 1268, 351, 1439, 186, 273, 1008, 231, 138, 142, 433, 456, 1268, 1018, 1274, 387,
                120, 340, 963, 832, 1127]
+
+    print(*map(get_cube, filter(select_num, numbers)), sep='\n')
+    # print(filter(select_num, numbers), sep='\n')
 
 def main():
     selects_three_digit_numbers()
