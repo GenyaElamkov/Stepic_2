@@ -399,7 +399,11 @@ print_res = reduce(lambda x, y: x + ' ' + y + ',', sort_filter_million, 'Cities:
 
 
 def main():
-    print(print_res)
+    func = lambda x: True if x % 19 == 0 or x % 13 == 0 else False
+    # print(func(247))
+    func = lambda word: word.lower().startswith('a') and word[-1].lower().endswith('a')
+    print(func('abcdA'))
+    # print(print_res)
     # print(map_result)
     # print(filter_result)
     # print(reduce_result)
