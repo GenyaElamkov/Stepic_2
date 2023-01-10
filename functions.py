@@ -462,9 +462,29 @@ numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34, 100
 numbers_filter = map(lambda n: n // 2 if n % 2 == 0 else n, filter(lambda n: n < 47 or n % 2 == 0, numbers))
 # print(*numbers_filter)
 
+"""
+Список data содержит информацию о численности населения некоторых штатов США. Напишите программу 
+сортировки по убыванию списка data на основании последнего символа в названии штата. Затем распечатайте
+элементы этого списка, каждый на новой строке в формате:
+
+<название штата>: <численность населения>
+
+Vermont: 626299
+Massachusetts: 7029917
+...
+"""
+
+data = [(19542209, 'New York'), (4887871, 'Alabama'), (1420491, 'Hawaii'), (626299, 'Vermont'),
+        (1805832, 'West Virginia'), (39865590, 'California'), (11799448, 'Ohio'), (10711908, 'Georgia'),
+        (10077331, 'Michigan'), (10439388, 'Virginia'), (7705281, 'Washington'), (7151502, 'Arizona'),
+        (7029917, 'Massachusetts'), (6910840, 'Tennessee')]
+
+sort_data = sorted(data, key=lambda x: x[1][-1], reverse=True)
+
+print(*[f'{v}: {k}' for k, v in sort_data], sep='\n')
 
 def main():
-    # print(print_res)
+    pass
     # print(map_result)
     # print(filter_result)
     # print(reduce_result)
