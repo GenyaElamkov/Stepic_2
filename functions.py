@@ -398,11 +398,36 @@ print_res = reduce(lambda x, y: x + ' ' + y + ',', sort_filter_million, 'Cities:
 # s = list(filter(lambda x:x[1] > 10_000_000 and x[2] == 'primary', data))
 
 
+words = ['beverage', 'monday', 'abroad', 'bias', 'abuse', 'abolish', 'abuse', 'abuse', 'bid', 'wednesday', 'able',
+         'betray', 'accident', 'abduct', 'bigot', 'bet', 'abandon', 'besides', 'access', 'friday', 'bestow',
+         'abound', 'absent', 'beware', 'abundant', 'abnormal', 'aboard', 'about', 'accelerate', 'abort', 'thursday',
+         'tuesday', 'sunday', 'berth', 'beyond', 'benevolent', 'abate', 'abide', 'bicycle', 'beside', 'accept',
+         'berry', 'bewilder', 'abrupt', 'saturday', 'accessory', 'absorb']
+print_words = sorted(filter(lambda x: len(x) == 6, words))
+# print(*print_words)
+
+numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34, 100, 36, 81, 33, 81, 66, 83, 41, 80, 80,
+           93, 40, 34, 32, 16, 5, 16, 40, 93, 36, 65, 8, 19, 8, 75, 66, 21, 72, 32, 41, 59, 35, 64, 49, 78, 83, 27,
+           57, 53, 43, 35, 48, 17, 19, 40, 90, 57, 77, 56, 80, 95, 90, 27, 26, 6, 4, 23, 52, 39, 63, 74, 15, 66, 29,
+           88, 94, 37, 44, 2, 38, 36, 32, 49, 5, 33, 60, 94, 89, 8, 36, 94, 46, 33]
+
+numbers_filter = map(lambda n: n // 2 if n % 2 == 0 else n, filter(lambda n: n < 47 or n % 2 == 0, numbers))
+print(*numbers_filter)
+
+
 def main():
+    is_non_negative_num = lambda n: n.replace('.', '', 1).isnumeric()
+    is_num = lambda n: False if '-' in n[1:] else n.replace('-', '', 1).replace('.', '', 1).isnumeric()
+    # is_num = lambda n: is_non_negative_num(n[1:]) if q[0] == '-' else is_non_negative_num(n)
+    # print(is_num('-11'))
+    # print(is_non_negative_num('12300'))
+
     func = lambda x: True if x % 19 == 0 or x % 13 == 0 else False
-    # print(func(247))
+    # print(func(247))s
+
     func = lambda word: word.lower().startswith('a') and word[-1].lower().endswith('a')
-    print(func('abcdA'))
+    # print(func('abcdA'))
+
     # print(print_res)
     # print(map_result)
     # print(filter_result)
