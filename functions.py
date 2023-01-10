@@ -397,7 +397,49 @@ sort_filter_million = sorted(filter_million)
 print_res = reduce(lambda x, y: x + ' ' + y + ',', sort_filter_million, 'Cities:')[:-1]
 # s = list(filter(lambda x:x[1] > 10_000_000 and x[2] == 'primary', data))
 
+#######################
+#  Модуль № 8
+######################
 
+"""
+Напишите функцию func, используя синтаксис анонимных функций, которая принимает целочисленный аргумент и возвращает
+ значение True, если он делится без остатка на 1919 или на 1313 и False в противном случае.
+"""
+func = lambda x: True if x % 19 == 0 or x % 13 == 0 else False
+# print(func(247))
+
+
+"""
+Напишите функцию func, используя синтаксис анонимных функций, которая принимает строковый аргумент и возвращает 
+значение True, если переданный аргумент начинается и заканчивается на английскую букву a (регистр буквы неважен) 
+и False в противном случае.
+"""
+func_1 = lambda word: word.lower().startswith('a') and word[-1].lower().endswith('a')
+# print(func_1('abcdA'))
+
+
+"""
+Напишите функцию is_non_negative_num, используя синтаксис анонимных функций, которая принимает строковый аргумент 
+и возвращает значение True, если переданный аргумент является неотрицательным числом (целым или вещественным) 
+и False в противном случае.
+"""
+is_non_negative_num = lambda n: n.replace('.', '', 1).isnumeric()
+# print(is_non_negative_num('12300'))
+
+
+"""
+Напишите функцию is_num, используя синтаксис анонимных функций, которая принимает строковый аргумент и возвращает
+значение True, если переданный аргумент является числом (целым или вещественным) и False в противном случае.
+"""
+is_num = lambda n: False if '-' in n[1:] else n.replace('-', '', 1).replace('.', '', 1).isnumeric()
+# is_num = lambda n: is_non_negative_num(n[1:]) if q[0] == '-' else is_non_negative_num(n)
+# print(is_num('-11'))
+
+
+"""
+Напишите программу, которая с помощью встроенных функций filter() и sorted() выводит слова из списка words, 
+имеющие длину ровно 6 символов. Слова следует вывести в алфавитном порядке на одной строке, разделив символом пробела.
+"""
 words = ['beverage', 'monday', 'abroad', 'bias', 'abuse', 'abolish', 'abuse', 'abuse', 'bid', 'wednesday', 'able',
          'betray', 'accident', 'abduct', 'bigot', 'bet', 'abandon', 'besides', 'access', 'friday', 'bestow',
          'abound', 'absent', 'beware', 'abundant', 'abnormal', 'aboard', 'about', 'accelerate', 'abort', 'thursday',
@@ -406,28 +448,22 @@ words = ['beverage', 'monday', 'abroad', 'bias', 'abuse', 'abolish', 'abuse', 'a
 print_words = sorted(filter(lambda x: len(x) == 6, words))
 # print(*print_words)
 
+
+"""
+Напишите программу, которая с помощью встроенных функций map() и filter() удаляет из списка numbers все нечетные 
+элементы, большие 47, а все четные элементы нацело делит на два (целочисленное деление – //). Полученные числа 
+следует вывести на одной строке, разделив символом пробела и сохранив исходный порядок.
+"""
 numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34, 100, 36, 81, 33, 81, 66, 83, 41, 80, 80,
            93, 40, 34, 32, 16, 5, 16, 40, 93, 36, 65, 8, 19, 8, 75, 66, 21, 72, 32, 41, 59, 35, 64, 49, 78, 83, 27,
            57, 53, 43, 35, 48, 17, 19, 40, 90, 57, 77, 56, 80, 95, 90, 27, 26, 6, 4, 23, 52, 39, 63, 74, 15, 66, 29,
            88, 94, 37, 44, 2, 38, 36, 32, 49, 5, 33, 60, 94, 89, 8, 36, 94, 46, 33]
 
 numbers_filter = map(lambda n: n // 2 if n % 2 == 0 else n, filter(lambda n: n < 47 or n % 2 == 0, numbers))
-print(*numbers_filter)
+# print(*numbers_filter)
 
 
 def main():
-    is_non_negative_num = lambda n: n.replace('.', '', 1).isnumeric()
-    is_num = lambda n: False if '-' in n[1:] else n.replace('-', '', 1).replace('.', '', 1).isnumeric()
-    # is_num = lambda n: is_non_negative_num(n[1:]) if q[0] == '-' else is_non_negative_num(n)
-    # print(is_num('-11'))
-    # print(is_non_negative_num('12300'))
-
-    func = lambda x: True if x % 19 == 0 or x % 13 == 0 else False
-    # print(func(247))s
-
-    func = lambda word: word.lower().startswith('a') and word[-1].lower().endswith('a')
-    # print(func('abcdA'))
-
     # print(print_res)
     # print(map_result)
     # print(filter_result)
