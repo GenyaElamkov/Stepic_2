@@ -533,6 +533,8 @@ mixed_list = ['beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides', 'be
               'aboard', 50, 89, 'tuesday', 66, 'bestow', 'absent', 76, 46, 'betray', 47, 'able', 11]
 
 sort_mixed_list = sorted(mixed_list, key=lambda x: (isinstance(x, str), x))
+
+
 # print(*sort_mixed_list)
 
 
@@ -550,12 +552,16 @@ def opposite_color():
     Напишите программу, которая по трем компонентам заданного цвета, находит компоненты противоположного цвета.
     """
 
-    color = map(lambda x: 255-int(x), input().split())
+    color = map(lambda x: 255 - int(x), input().split())
     print(*color)
 
+
 def evaluate(coefficients, x):
-    res = map(lambda n, x: n*x)
-    print(res)
+    """
+    Программа, которая вычисляет значение указанного многочлена при заданном значении x.
+    """
+    pass
+
 
 def main():
     coefficients = [int(num) for num in input().split()]
