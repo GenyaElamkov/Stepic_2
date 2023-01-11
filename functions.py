@@ -1,3 +1,4 @@
+from functools import reduce
 from math import sqrt, sin
 import operator
 
@@ -234,11 +235,11 @@ def interesting_sorting_2():
     """
 
 
-def map(function, items):
-    result = []
-    for item in items:
-        result.append(function(item))
-    return result
+# def map(function, items):
+#     result = []
+#     for item in items:
+#         result.append(function(item))
+#     return result
 
 
 def set_round(item):
@@ -286,11 +287,11 @@ def selects_three_digit_numbers():
     print(*map(get_cube, filter(select_num, numbers)), sep='\n')
 
 
-def reduce(operation, items, initial_value):
-    acc = initial_value
-    for item in items:
-        acc = operation(acc, item)
-    return acc
+# def reduce(operation, items, initial_value):
+#     acc = initial_value
+#     for item in items:
+#         acc = operation(acc, item)
+#     return acc
 
 
 def squares(num):
@@ -560,7 +561,12 @@ def evaluate(coefficients, x):
     """
     Программа, которая вычисляет значение указанного многочлена при заданном значении x.
     """
-    pass
+    multiply = map(lambda b, a: b * x ** a, coefficients, range(len(coefficients) - 1, -1, -1))
+    res_sum = reduce(lambda a, b: a + b, multiply, 0)
+    print(res_sum)
+
+    # evaluate = lambda coefficients, x: reduce(lambda s, a: s * x + a, coefficients, 0)
+    # print(evaluate([*map(int, input().split())], int(input())))
 
 
 def main():
