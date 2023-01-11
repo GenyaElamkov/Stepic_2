@@ -533,11 +533,35 @@ mixed_list = ['beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides', 'be
               'aboard', 50, 89, 'tuesday', 66, 'bestow', 'absent', 76, 46, 'betray', 47, 'able', 11]
 
 sort_mixed_list = sorted(mixed_list, key=lambda x: (isinstance(x, str), x))
-print(*sort_mixed_list)
+# print(*sort_mixed_list)
 
+
+def opposite_color():
+    """
+    Противоположный цвет
+    В цветовой схеме RGB цвета задаются с помощью трех компонентов:
+
+    R — интенсивность красной составляющей цвета;
+    G — интенсивность зеленой составляющей цвета;
+    B — интенсивность синей составляющей цвета.
+    Противоположные цвета задаются как RGB и (255-R)(255-G)(255-B). Считается, что такие цвета хорошо гармонируют друг
+    с другом.
+
+    Напишите программу, которая по трем компонентам заданного цвета, находит компоненты противоположного цвета.
+    """
+
+    color = map(lambda x: 255-int(x), input().split())
+    print(*color)
+
+def evaluate(coefficients, x):
+    res = map(lambda n, x: n*x)
+    print(res)
 
 def main():
-    pass
+    coefficients = [int(num) for num in input().split()]
+    x = int(input())
+    evaluate(coefficients, x)
+    # opposite_color()
     # print(map_result)
     # print(filter_result)
     # print(reduce_result)
