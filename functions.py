@@ -569,10 +569,23 @@ def evaluate(coefficients, x):
     # print(evaluate([*map(int, input().split())], int(input())))
 
 
+def ignore_command(command):
+    """
+    Функция ignore_command() принимает на вход один строковый аргумент command – команда, которую нужно проверить,
+    и возвращает значение True, если в команде содержится подстрока из списка ignore и False – если нет.
+    """
+    ignore = ['alias', 'configuration', 'ip', 'sql', 'select', 'update', 'exec', 'del', 'truncate']
+    return any(map(lambda x: x in command, ignore))
+
 def main():
+    print(ignore_command('get ip'))
+    print(ignore_command('select all'))
+    print(ignore_command('delete'))
+    print(ignore_command('trancate'))
+
     coefficients = [int(num) for num in input().split()]
-    x = int(input())
-    evaluate(coefficients, x)
+    # x = int(input())
+    # evaluate(coefficients, x)
     # opposite_color()
     # print(map_result)
     # print(filter_result)
