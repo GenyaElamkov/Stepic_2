@@ -598,7 +598,7 @@ def main():
     # print(ignore_command('delete'))
     # print(ignore_command('trancate'))
 
-    coefficients = [int(num) for num in input().split()]
+    # coefficients = [int(num) for num in input().split()]
     # x = int(input())
     # evaluate(coefficients, x)
     # opposite_color()
