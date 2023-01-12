@@ -577,11 +577,26 @@ def ignore_command(command):
     ignore = ['alias', 'configuration', 'ip', 'sql', 'select', 'update', 'exec', 'del', 'truncate']
     return any(map(lambda x: x in command, ignore))
 
+
+"""
+Используя параллельную итерацию сразу по трем спискам countries, capitals и population выведите информацию о стране.
+Для каждой страны информацию выводить на отдельной строке. 
+<capital> is the capital of <country>, population equal <population> people.
+"""
+countries = ['Russia', 'USA', 'UK', 'Germany', 'France', 'India']
+capitals = ['Moscow', 'Washington', 'London', 'Berlin', 'Paris', 'Delhi']
+population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_380_004_385]
+
+for cap, count, pops in zip(capitals, countries, population):
+    print(f"{cap} is the capital of {count}, population equal {pops} people.")
+
+
 def main():
-    print(ignore_command('get ip'))
-    print(ignore_command('select all'))
-    print(ignore_command('delete'))
-    print(ignore_command('trancate'))
+    pass
+    # print(ignore_command('get ip'))
+    # print(ignore_command('select all'))
+    # print(ignore_command('delete'))
+    # print(ignore_command('trancate'))
 
     coefficients = [int(num) for num in input().split()]
     # x = int(input())
