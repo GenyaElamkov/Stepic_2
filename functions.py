@@ -587,12 +587,32 @@ countries = ['Russia', 'USA', 'UK', 'Germany', 'France', 'India']
 capitals = ['Moscow', 'Washington', 'London', 'Berlin', 'Paris', 'Delhi']
 population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_380_004_385]
 
-for cap, count, pops in zip(capitals, countries, population):
-    print(f"{cap} is the capital of {count}, population equal {pops} people.")
+# for cap, count, pops in zip(capitals, countries, population):
+#     print(f"{cap} is the capital of {count}, population equal {pops} people.")
+
+
+def set_ball():
+    """
+    На вход программе подаются три строки текста с вещественными числами, значениями абсцисс (xx), ординат (yy) и
+    аппликат (zz) точек трехмерного пространства. Напишите программу для проверки расположения всех точек с
+    введенными координатами внутри либо на поверхности шара с центром в начале координат и радиусом R = 2. Формат
+    входных данных На вход программе подаются три строки текста с вещественными числами, разделенными символом
+    пробела – абсциссы, ординаты и аппликаты точек в трехмерной системе координат.
+
+    Формат выходных данных Программа должна вывести True если все точки с введенными координатами находятся внутри
+    или на границе шара и False, если вне.
+    """
+
+    abscissas = list(map(float, input().split()))
+    ordinates = list(map(float, input().split()))
+    applicates = list(map(float, input().split()))
+    res_zip = list(zip(abscissas, ordinates, applicates))
+    print(res_zip)
+    print(reduce(lambda x, y: x**2 + y**2))
 
 
 def main():
-    pass
+    set_ball()
     # print(ignore_command('get ip'))
     # print(ignore_command('select all'))
     # print(ignore_command('delete'))
