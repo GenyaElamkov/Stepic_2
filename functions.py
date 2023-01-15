@@ -603,16 +603,29 @@ def set_ball():
     или на границе шара и False, если вне.
     """
 
-    abscissas = list(map(float, input().split()))
-    ordinates = list(map(float, input().split()))
-    applicates = list(map(float, input().split()))
-    res_zip = list(zip(abscissas, ordinates, applicates))
-    print(res_zip)
-    print(reduce(lambda x, y: x**2 + y**2))
+    # abscissas = map(float, input().split())
+    # ordinates = map(float, input().split())
+    # applicates = map(float, input().split())
+    abscissas, ordinates, applicates = (map(float, input().split()) for _ in range(3))
+    r = 2   # Радиус шара.
+    print(all([x**2 + y**2 + z**2 <= r**2 for x, y, z in zip(abscissas, ordinates, applicates)]))
+
+def correct_ip_address():
+    """
+    IP-адрес – уникальный числовой идентификатор устройства в компьютерной сети, работающей по протоколу TCP/IP.
+
+    В 44-й версии IP-адрес представляет собой 3232-битное число. Адрес записывается в виде четырёх десятичных чисел
+    (октетов) со значением от 00 до 255255 (включительно), разделённых точками, например, 192.168.1.2192.168.1.2.
+
+    Напишите программу с использованием встроенной функции all() для проверки корректности IP-адреса: все ли октеты в
+    IP-адресе – числа со значением от 00 до 255255.
+    """
+    adsress = input()
 
 
 def main():
-    set_ball()
+    correct_ip_address()
+    # set_ball()
     # print(ignore_command('get ip'))
     # print(ignore_command('select all'))
     # print(ignore_command('delete'))
