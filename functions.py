@@ -587,6 +587,7 @@ countries = ['Russia', 'USA', 'UK', 'Germany', 'France', 'India']
 capitals = ['Moscow', 'Washington', 'London', 'Berlin', 'Paris', 'Delhi']
 population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_380_004_385]
 
+
 # for cap, count, pops in zip(capitals, countries, population):
 #     print(f"{cap} is the capital of {count}, population equal {pops} people.")
 
@@ -607,8 +608,9 @@ def set_ball():
     # ordinates = map(float, input().split())
     # applicates = map(float, input().split())
     abscissas, ordinates, applicates = (map(float, input().split()) for _ in range(3))
-    r = 2   # Радиус шара.
-    print(all([x**2 + y**2 + z**2 <= r**2 for x, y, z in zip(abscissas, ordinates, applicates)]))
+    r = 2  # Радиус шара.
+    print(all([x ** 2 + y ** 2 + z ** 2 <= r ** 2 for x, y, z in zip(abscissas, ordinates, applicates)]))
+
 
 def correct_ip_address():
     """
@@ -620,7 +622,9 @@ def correct_ip_address():
     Напишите программу с использованием встроенной функции all() для проверки корректности IP-адреса: все ли октеты в
     IP-адресе – числа со значением от 00 до 255255.
     """
-    adsress = input()
+    adsress = input().split('.')
+    test = all(map(lambda n: n.isdigit() and 0 <= int(n) <= 255, adsress))
+    print(test)
 
 
 def main():
