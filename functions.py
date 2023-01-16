@@ -1,6 +1,5 @@
 from functools import reduce
 from math import sqrt, sin
-import operator
 
 
 def matrix(n=1, m=None, value=0):
@@ -666,8 +665,32 @@ def good_password():
     """
 
 
+def honors_students():
+    """
+    Учитель Тимур проверял контрольные работы по математике в нескольких классах онлайн-школы BEEGEEK и решил
+    убедиться, что в каждом классе есть хотя бы один отличник – ученик с оценкой 55 по контрольной работе. Напишите
+    программу с использованием встроенных функций all(), any() для помощи Тимуру в проверке.
+
+    Формат входных данных На вход программе подается натуральное число n – количество классов. Затем для каждого класса
+    вводится блок информации вида:
+
+    натуральное число k – количество учеников в классе;
+    далее вводится k строк вида: фамилия оценка.
+    Формат выходных данных
+    Программа должна вывести YES, если в каждом классе есть хотя бы один отличник, и NO в противном случае.
+    """
+
+    res = []
+    for _ in range(int(input())):
+        students = [input().endswith('5') for _ in range(int(input()))]
+        res.append(any(students))
+
+    print('YES' if all(res) else 'NO')
+
+
 def main():
-    good_password()
+    honors_students()
+    # good_password()
     # interesting_numbers()
     # correct_ip_address()
     # set_ball()
