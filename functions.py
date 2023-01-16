@@ -534,6 +534,8 @@ mixed_list = ['beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides', 'be
               'aboard', 50, 89, 'tuesday', 66, 'bestow', 'absent', 76, 46, 'betray', 47, 'able', 11]
 
 sort_mixed_list = sorted(mixed_list, key=lambda x: (isinstance(x, str), x))
+
+
 # print(*sort_mixed_list)
 
 
@@ -640,8 +642,33 @@ def interesting_numbers():
         if all(res):
             print(num, end=' ')
 
+
+def good_password():
+    """
+    Хороший пароль по условиям этой задачи состоит как минимум из 77 символов, содержит хотя бы одну цифру,
+    заглавную и строчную букву. Напишите программу со встроенной функцией any() для определения хорош ли введенный
+    пароль.
+    """
+    password = input()
+    p_len = len(password) >= 7
+    p_isupper = any(map(lambda x: x.isupper(), password))
+    p_islower = any(map(lambda x: x.islower(), password))
+    p_isdigit = any(map(lambda x: x.isdigit(), password))
+
+    print('YES' if all([p_len, p_isupper, p_islower, p_isdigit]) else 'NO')
+
+    """
+    s = input()
+    print('YES' if all((any(i.isupper() for i in s), 
+                    any(i.islower() for i in s), 
+                    any(i.isdigit() for i in s), 
+                    len(s) >= 7)) else 'NO')
+    """
+
+
 def main():
-    interesting_numbers()
+    good_password()
+    # interesting_numbers()
     # correct_ip_address()
     # set_ball()
     # print(ignore_command('get ip'))
