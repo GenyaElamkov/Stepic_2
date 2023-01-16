@@ -534,8 +534,6 @@ mixed_list = ['beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides', 'be
               'aboard', 50, 89, 'tuesday', 66, 'bestow', 'absent', 76, 46, 'betray', 47, 'able', 11]
 
 sort_mixed_list = sorted(mixed_list, key=lambda x: (isinstance(x, str), x))
-
-
 # print(*sort_mixed_list)
 
 
@@ -627,8 +625,24 @@ def correct_ip_address():
     print(test)
 
 
+def interesting_numbers():
+    """
+    На вход программе подаются два натуральных числа a и b. Напишите программу с использованием встроенной функции
+    all() для обнаружения всех целых чисел в диапазоне [a;b], которые делятся на каждую содержащуюся в них
+    цифру без остатка.
+    """
+    a, b = [int(input()) for _ in range(2)]
+    generation_num = list(range(a, b + 1))
+
+    for num in generation_num:
+        res = map(lambda x: x != 0 and num % x == 0, map(int, str(num)))
+
+        if all(res):
+            print(num, end=' ')
+
 def main():
-    correct_ip_address()
+    interesting_numbers()
+    # correct_ip_address()
     # set_ball()
     # print(ignore_command('get ip'))
     # print(ignore_command('select all'))
