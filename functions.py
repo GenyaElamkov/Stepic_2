@@ -1,5 +1,6 @@
 from functools import reduce
 from math import sqrt, sin
+from operator import *
 
 
 def matrix(n=1, m=None, value=0):
@@ -813,8 +814,6 @@ def compose(f, g):
 # print(compose(add3, mul7)(2))
 # print(compose(mul7, str)(3))
 # print(compose(str, mul7)(5))
-
-from operator import *
 
 
 def arithmetic_operation(oper):
