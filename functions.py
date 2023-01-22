@@ -593,8 +593,8 @@ population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_38
 
 def set_ball():
     """
-    На вход программе подаются три строки текста с вещественными числами, значениями абсцисс (xx), ординат (yy) и
-    аппликат (zz) точек трехмерного пространства. Напишите программу для проверки расположения всех точек с
+    На вход программе подаются три строки текста с вещественными числами, значениями абсцисс (x), ординат (y) и
+    аппликат (z) точек трехмерного пространства. Напишите программу для проверки расположения всех точек с
     введенными координатами внутри либо на поверхности шара с центром в начале координат и радиусом R = 2. Формат
     входных данных На вход программе подаются три строки текста с вещественными числами, разделенными символом
     пробела – абсциссы, ординаты и аппликаты точек в трехмерной системе координат.
@@ -644,7 +644,7 @@ def interesting_numbers():
 
 def good_password():
     """
-    Хороший пароль по условиям этой задачи состоит как минимум из 77 символов, содержит хотя бы одну цифру,
+    Хороший пароль по условиям этой задачи состоит как минимум из 7 символов, содержит хотя бы одну цифру,
     заглавную и строчную букву. Напишите программу со встроенной функцией any() для определения хорош ли введенный
     пароль.
     """
@@ -668,7 +668,7 @@ def good_password():
 def honors_students():
     """
     Учитель Тимур проверял контрольные работы по математике в нескольких классах онлайн-школы BEEGEEK и решил
-    убедиться, что в каждом классе есть хотя бы один отличник – ученик с оценкой 55 по контрольной работе. Напишите
+    убедиться, что в каждом классе есть хотя бы один отличник – ученик с оценкой 5 по контрольной работе. Напишите
     программу с использованием встроенных функций all(), any() для помощи Тимуру в проверке.
 
     Формат входных данных На вход программе подается натуральное число n – количество классов. Затем для каждого класса
@@ -688,8 +688,210 @@ def honors_students():
     print('YES' if all(res) else 'NO')
 
 
+#######################
+#
+#  Экзамен.
+#
+######################
+
+def test():
+    """
+    test func
+    """
+    return lambda x: x * 2
+
+
+#
+# arr = list(range(10))
+# res = filter(lambda x: x % 2 == 0 and x != 0, arr)
+# print(any(map(lambda x: x % 2 == 0 and x != 0, arr)))
+#
+# lam = lambda x: x + 100
+# print(lam(10))
+# print(lam.__defaults__)
+
+
+def a():
+    def b(x):
+        return x ** 2
+
+    return b
+
+
+def generate_letter(mail, name, date, time, place, teacher='Тимур Гуев', number=17):
+    """
+    To: <mail>
+    Приветствую, <name>!
+    Вам назначен экзамен, который пройдет <date>, в <time>.
+    По адресу: <place>.
+    Экзамен будет проводить <teacher> в кабинете <number>.
+    Желаем удачи на экзамене!
+    """
+    mails = f"To: {mail}\nПриветствую, {name}!\nВам назначен экзамен, который пройдет {date}, в {time}.\nПо адресу: {place}.\nЭкзамен будет проводить {teacher} в кабинете {number}.\nЖелаем удачи на экзамене!"
+    return mails
+
+
+def pretty_print(data, side='-', delimiter='|'):
+    word = delimiter + ' '
+    for d in data:
+        word += str(d) + ' ' + delimiter + ' '
+    # word = word[:-1]
+    t = len(word) - 3
+    print(f" {side * t} \n{word[:-1]}\n {side * t} ")
+
+
+def concat(*args, sep=' '):
+    # return sep.join([str(_) for _ in args])
+    # return sep.join(args)
+    # print(*args, sep=sep)
+    return sep.join(map(str, args))
+
+
+def product_of_odds(data):
+    # result = 1
+    # for i in data:
+    #     if i % 2 == 1:
+    #         result *= i
+    # return result
+
+    return reduce(lambda x, y: x * y, filter(lambda x: x % 2 == 1, data), 1)
+
+
+words = 'the world is mine take a look what you have started'.split()
+
+# print(*map(lambda x: f'"{x}"', words))
+
+# numbers = [18, 191, 9009, 5665, 78, 77, 45, 23, 19991, 908, 8976, 6565, 5665, 10, 1000, 908, 909, 232, 45654, 786]
+# print(*filter(lambda x: x != x[::-1], map(str, numbers)))
+
+numbers = [(10, -2, 3, 4), (-13, 56), (1, 9, 2), (-1, -9, -45, 32), (-1, 5, 1), (17, 0, 1), (0, 1), (3,), (39, 12),
+           (11, -23), (10, -100, 21, 32), (3, -8), (1, 1)]
+
+sorted_numbers = sorted(numbers, key=lambda x: sum(x) / len(x), reverse=True)
+
+
+# print(sorted_numbers)
+
+def mul7(x):
+    return x * 7
+
+
+def add2(x, y):
+    return x + y
+
+
+def add3(x, y, z):
+    return x + y + z
+
+
+def call(func, *args):
+    return func(*args)
+
+
+# print(call(mul7, 10))
+# print(call(add2, 2, 7))
+# print(call(add3, 10, 30, 40))
+# print(call(bool, 0))
+
+
+def add3(x):
+    return x + 3
+
+
+def mul7(x):
+    return x * 7
+
+
+def compose(f, g):
+    def func(x):
+        return f(g(x))
+
+    return func
+
+
+# print(compose(mul7, add3)(1))
+# print(compose(add3, mul7)(2))
+# print(compose(mul7, str)(3))
+# print(compose(str, mul7)(5))
+
+from operator import *
+
+
+def arithmetic_operation(oper):
+    kw = {"+": add,
+          "-": sub,
+          "*": mul,
+          "/": truediv}
+
+    def fun(x, y):
+        return sum(map(kw[oper], [x], [y]))
+
+    return fun
+
+
+"""
+def arithmetic_operation(operation):
+    oper = {
+        '+': add,
+        '-': sub,
+        '*': mul,
+        '/': truediv
+    }
+    return oper[operation]
+"""
+
+add = arithmetic_operation('+')
+div = arithmetic_operation('/')
+
+
+# print(add(10, 20))
+# print(div(20, 5))
+
+def test():
+    text = 'cate Frog cat FROGs bee CATERS mouse cATwalk dolphin mOus Cats CatAlo'.split()
+    # text = input().split()
+    print(text)
+    res = sorted(text, key=lambda x: x.lower())
+    print(*res)
+
+
+def test_2():
+    def t(word):
+        return sum(map(lambda x: ord(x.upper()) - ord('A'), word))
+
+    text = [input() for _ in range(int(input()))]
+    res = sorted(sorted(text), key=t)
+    print(*res, sep='\n')
+
+
+def test_3():
+    # multiply = map(lambda b, a: b * x ** a, coefficients, range(len(coefficients) - 1, -1, -1))
+    # res_sum = reduce(lambda a, b: a + b, multiply, 0)
+    # print(res_sum)
+    def s(ip):
+        res = list(map(int, ip.split('.')))
+        tmp = list(map(lambda x, a: x * 256 ** a, res, range(4 - 1, -1, -1)))
+        return sum(tmp)
+
+    arr = [input() for _ in range(int(input()))]
+
+    print(*sorted(arr, key=s), sep='\n')
+
+
 def main():
-    honors_students()
+    test_3()
+    # test_2()
+    # test()
+    # print(product_of_odds([1,2,3]))
+    # print(concat('hello', 'python', 'and', 'stepik'))
+    # print(concat('hello', 'python', 'and', 'stepik', sep='*'))
+    # print(concat(1, 2, 3, 4, 5, 6, 7, 8, 9, sep='$$'))
+    # pretty_print([1, 2, 10, 23, 123, 3000])
+    # print(generate_letter('lara@yandex.ru', 'Лариса', '10 декабря', '12:00', 'Часова 23, корпус 2'))
+    # t = a()
+    # print(t(3))
+    # a = test()
+    # honors_students()
     # good_password()
     # interesting_numbers()
     # correct_ip_address()
