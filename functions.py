@@ -5,14 +5,14 @@ from operator import *
 
 def matrix(n=1, m=None, value=0):
     """
-    Cоздает, заполняет и возвращает матрицу заданного размера.
-    При этом (в зависимости от переданных аргументов) она должна вести себя так:
+    Cоздает, заполняет и возвращает матрицу заданного размера. При этом (в
+    зависимости от переданных аргументов) она должна вести себя так:
 
-        matrix() — возвращает матрицу 1× 1, в которой единственное число равно нулю;
-        matrix(n) — возвращает матрицу n× n, заполненную нулями;
-        matrix(n, m) — возвращает матрицу из n строк и m столбцов, заполненную нулями;
-        matrix(n, m, value) — возвращает матрицу из n строк и m столбцов, в которой каждый
-        элемент равен числу value.
+        matrix() — возвращает матрицу 1× 1, в которой единственное число
+        равно нулю; matrix(n) — возвращает матрицу n× n, заполненную нулями;
+        matrix(n, m) — возвращает матрицу из n строк и m столбцов,
+        заполненную нулями; matrix(n, m, value) — возвращает матрицу из n
+        строк и m столбцов, в которой каждый элемент равен числу value.
     """
     if not m:
         m = n
@@ -20,19 +20,21 @@ def matrix(n=1, m=None, value=0):
 
 
 def count_args(*args):
-    """Принимает произвольное количество аргументов и возвращает количество переданных в нее аргументов."""
+    """Принимает произвольное количество аргументов и возвращает количество
+    переданных в нее аргументов. """
     return len(args)
 
 
 def sq_sum(*args):
-    """Принимает произвольное количество числовых аргументов и возвращает сумму их квадратов."""
+    """Принимает произвольное количество числовых аргументов и возвращает
+    сумму их квадратов. """
     return sum(n ** 2 for n in args)
 
 
 def mean(*args):
     """
-    Принимает произвольное количество аргументов и возвращает среднее арифметическое
-    переданных в нее числовых (int или float) аргументов.
+    Принимает произвольное количество аргументов и возвращает среднее
+    арифметическое переданных в нее числовых (int или float) аргументов.
     """
 
     arr = [
@@ -61,9 +63,10 @@ def greet(name, *args):
 def print_products(*args):
     """
     Принимает произвольное количество аргументов и выводит список продуктов
-    (любая непустая строка) по образцу: <номер продукта>) <название продукта>
-    (нумерация продуктов начинается с единицы). Если среди переданных аргументов нет ни одного продукта,
-    необходимо вывести текст Нет продуктов.
+    (любая непустая строка) по образцу: <номер продукта>) <название
+    продукта> (нумерация продуктов начинается с единицы). Если среди
+    переданных аргументов нет ни одного продукта, необходимо вывести текст
+    Нет продуктов.
     """
     counter = 0
     for product in args:
@@ -77,9 +80,10 @@ def print_products(*args):
 
 def info_kwargs(**kwargs):
     """
-    Принимает произвольное количество именованных аргументов и печатает именованные
-    аргументы в соответствии с образцом: <имя аргумента>: <значение аргумента>, при этом
-    имена аргументов следуют в алфавитном порядке (по возрастанию).
+    Принимает произвольное количество именованных аргументов и печатает
+    именованные аргументы в соответствии с образцом: <имя аргумента>:
+    <значение аргумента>, при этом имена аргументов следуют в алфавитном
+    порядке (по возрастанию).
     """
     for k, v in sorted(kwargs.items()):
         print(f'{k}: {v}')
@@ -94,8 +98,9 @@ def average(pointer):
 
 def get_min_max(numbers):
     """
-    Программа, которая с помощью встроенных функций min() и max() выводит те кортежи (каждый на отдельной строке),
-    которые имеют минимальное и максимальное среднее арифметическое значение элементов.
+    Программа, которая с помощью встроенных функций min() и max() выводит те
+    кортежи (каждый на отдельной строке), которые имеют минимальное и
+    максимальное среднее арифметическое значение элементов.
     """
     print(min(numbers, key=average))
     print(max(numbers, key=average))
@@ -107,8 +112,9 @@ def means(pointer):
 
 def sort_numbers(points):
     """
-    Программа, которая сортирует список points координат точек плоскости в соответствии с расстоянием от
-    начала координат (точки (0;0)). Программа должна вывести отсортированный список.
+    Программа, которая сортирует список points координат точек плоскости в
+    соответствии с расстоянием от начала координат (точки (0;0)). Программа
+    должна вывести отсортированный список.
     """
     print(sorted(points, key=means))
 
@@ -134,18 +140,22 @@ def compare(n):
 
 def sort_it_as_you_want():
     """
-    Список athletes содержит сведения о спортсменах в виде кортежей: (имя, возраст, рост, вес).
-    Напишите программу сортировки списка спортсменов по указанному полю:
+    Список athletes содержит сведения о спортсменах в виде кортежей: (имя,
+    возраст, рост, вес). Напишите программу сортировки списка спортсменов по
+    указанному полю:
 
     1: по имени;
     2: по возрасту;
     3: по росту;
     4: по весу.
 
-    На вход программе подается натуральное число от 11 до 44 – номер поля по которому требуется отсортировать список.
+    На вход программе подается натуральное число от 11 до 44 – номер поля по
+    которому требуется отсортировать список.
     """
-    athletes = [('Дима', 10, 130, 35), ('Тимур', 11, 135, 39), ('Руслан', 9, 140, 33), ('Рустам', 10, 128, 30),
-                ('Амир', 16, 170, 70), ('Рома', 16, 188, 100), ('Матвей', 17, 168, 68), ('Петя', 15, 190, 90)]
+    athletes = [('Дима', 10, 130, 35), ('Тимур', 11, 135, 39),
+                ('Руслан', 9, 140, 33), ('Рустам', 10, 128, 30),
+                ('Амир', 16, 170, 70), ('Рома', 16, 188, 100),
+                ('Матвей', 17, 168, 68), ('Петя', 15, 190, 90)]
     n = int(input())
 
     [print(*s) for s in sorted(athletes, key=compare(n))]
@@ -179,7 +189,8 @@ def mathematical_functions():
     n = int(input())
     name_func = input()
 
-    commands = {'квадрат': square, 'куб': cube, 'корень': root, 'модуль': module, 'синус': sine}
+    commands = {'квадрат': square, 'куб': cube, 'корень': root,
+                'модуль': module, 'синус': sine}
     print(commands[name_func](n))
 
     """
@@ -188,8 +199,8 @@ def mathematical_functions():
             return n**p
         return numpower
 
-    commands = {"квадрат": pwr(2), "куб": pwr(3), "корень": pwr(0.5), "модуль": abs, "синус": math.sin}
-    """
+    commands = {"квадрат": pwr(2), "куб": pwr(3), "корень": pwr(0.5), 
+    "модуль": abs, "синус": math.sin} """
 
 
 def sow(num):
@@ -220,7 +231,8 @@ def sorting_sum(text):
 def interesting_sorting_2():
     """
     Программа сортировки списка чисел в порядке неубывания суммы их цифр.
-    При этом, если у двух чисел одинаковая сумма цифр, их следует вывести в порядке неубывания.
+    При этом, если у двух чисел одинаковая сумма цифр, их следует вывести в
+    порядке неубывания.
     """
     text = sorted(input().split(), key=int)
     print(*sorted(text, key=sorting_sum))
@@ -248,10 +260,12 @@ def set_round(item):
 
 def rounds_2():
     """
-    Программу, которая с помощью функции map() округляет все элементы списка numbers до 22 десятичных знаков,
-    а затем выводит их, каждый на отдельной строке.
+    Программу, которая с помощью функции map() округляет все элементы списка
+    numbers до 22 десятичных знаков, а затем выводит их, каждый на отдельной
+    строке.
     """
-    numbers = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.12013, 23.22222, 90.09873,
+    numbers = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.12013,
+               23.22222, 90.09873,
                45.45, 314.1528, 2.71828, 1.41546]
     print(*map(set_round, numbers), sep='\n')
 
@@ -274,14 +288,20 @@ def get_cube(num):
 
 def selects_three_digit_numbers():
     """
-    Программа, которая с помощью функций filter() и map() отбирает из заданного списка numbers трёхзначные числа,
-    дающие при делении на 5 остаток 2, и выводит их кубы, каждый в отдельной строке.
+    Программа, которая с помощью функций filter() и map() отбирает из
+    заданного списка numbers трёхзначные числа, дающие при делении на 5
+    остаток 2, и выводит их кубы, каждый в отдельной строке.
     """
-    numbers = [1014, 1321, 675, 1215, 56, 1386, 1385, 431, 1058, 486, 1434, 696, 1016, 1084, 424, 1189, 475, 95,
-               1434, 1462, 815, 776, 657, 1225, 912, 537, 1478, 1176, 544, 488, 668, 944, 207, 266, 1309, 1027, 257,
-               1374, 1289, 1155, 230, 866, 708, 144, 1434, 1163, 345, 394, 560, 338, 232, 182, 1438, 1127, 928, 1309,
-               98, 530, 1013, 898, 669, 105, 130, 1363, 947, 72, 1278, 166, 904, 349, 831, 1207, 1496, 370, 725, 926,
-               175, 959, 1282, 336, 1268, 351, 1439, 186, 273, 1008, 231, 138, 142, 433, 456, 1268, 1018, 1274, 387,
+    numbers = [1014, 1321, 675, 1215, 56, 1386, 1385, 431, 1058, 486, 1434,
+               696, 1016, 1084, 424, 1189, 475, 95,
+               1434, 1462, 815, 776, 657, 1225, 912, 537, 1478, 1176, 544, 488,
+               668, 944, 207, 266, 1309, 1027, 257,
+               1374, 1289, 1155, 230, 866, 708, 144, 1434, 1163, 345, 394, 560,
+               338, 232, 182, 1438, 1127, 928, 1309,
+               98, 530, 1013, 898, 669, 105, 130, 1363, 947, 72, 1278, 166,
+               904, 349, 831, 1207, 1496, 370, 725, 926,
+               175, 959, 1282, 336, 1268, 351, 1439, 186, 273, 1008, 231, 138,
+               142, 433, 456, 1268, 1018, 1274, 387,
                120, 340, 963, 832, 1127]
 
     print(*map(get_cube, filter(select_num, numbers)), sep='\n')
@@ -306,10 +326,14 @@ def output_summa():
     """
     Программа для вычисления и вывода суммы квадратов элементов списка numbers.
     """
-    numbers = [97, 42, 9, 32, 3, 45, 31, 77, -1, 11, -2, 75, 5, 51, 34, 28, 46, 1, -8, 84, 16, 51, 90, 56,
-               65, 90, 23, 35, 11, -10, 70, 90, 90, 12, 96, 58, -8, -4, 91, 76, 94, 60, 72, 43, 4, -6, -5,
-               51, 58, 60, 30, 38, 67, 62, 36, 72, 34, 82, 62, -1, 60, 82, 87, 81, -7, 57, 26, 36, 17, 43,
-               80, 40, 75, 94, 91, 64, 38, 72, 29, 84, 38, 35, 7, 54, 31, 95, 78, 27, 82, 1, 64, 94, 31, 29,
+    numbers = [97, 42, 9, 32, 3, 45, 31, 77, -1, 11, -2, 75, 5, 51, 34, 28, 46,
+               1, -8, 84, 16, 51, 90, 56,
+               65, 90, 23, 35, 11, -10, 70, 90, 90, 12, 96, 58, -8, -4, 91, 76,
+               94, 60, 72, 43, 4, -6, -5,
+               51, 58, 60, 30, 38, 67, 62, 36, 72, 34, 82, 62, -1, 60, 82, 87,
+               81, -7, 57, 26, 36, 17, 43,
+               80, 40, 75, 94, 91, 64, 38, 72, 29, 84, 38, 35, 7, 54, 31, 95,
+               78, 27, 82, 1, 64, 94, 31, 29,
                -8, 98, 24, 61, 7, 73]
 
     print(sum(map(squares, numbers)))
@@ -322,15 +346,23 @@ def get_two_digit_numbers(num):
 
 def output_summa_square():
     """
-    Программа для вычисления и вывода суммы квадратов двузначных чисел, которые делятся на 7 без остатка.
+    Программа для вычисления и вывода суммы квадратов двузначных чисел,
+    которые делятся на 7 без остатка.
     """
-    numbers = [77, 293, 28, 242, 213, 285, 71, 286, 144, 276, 61, 298, 280, 214, 156, 227, 228, 51, -4, 202, 58, 99,
-               270, 219, 94, 253, 53, 235, 9, 158, 49, 183, 166, 205, 183, 266, 180, 6, 279, 200, 208, 231, 178, 201,
-               260, -35, 152, 115, 79, 284, 181, 92, 286, 98, 271, 259, 258, 196, -8, 43, 2, 128, 143, 43, 297, 229, 60,
-               254, -9, 5, 187, 220, -8, 111, 285, 5, 263, 187, 192, -9, 268, -9, 23, 71, 135, 7, -161, 65, 135, 29,
-               148, 242, 33, 35, 211, 5, 161, 46, 159, 23, 169, 23, 172, 184, -7, 228, 129, 274, 73, 197, 272, 54, 278,
-               26, 280, 13, 171, 2, 79, -2, 183, 10, 236, 276, 4, 29, -10, 41, 269, 94, 279, 129, 39, 92, -63, 263, 219,
-               57, 18, 236, 291, 234, 10, 250, 0, 64, 172, 216, 30, 15, 229, 205, 123, -105]
+    numbers = [77, 293, 28, 242, 213, 285, 71, 286, 144, 276, 61, 298, 280,
+               214, 156, 227, 228, 51, -4, 202, 58, 99,
+               270, 219, 94, 253, 53, 235, 9, 158, 49, 183, 166, 205, 183, 266,
+               180, 6, 279, 200, 208, 231, 178, 201,
+               260, -35, 152, 115, 79, 284, 181, 92, 286, 98, 271, 259, 258,
+               196, -8, 43, 2, 128, 143, 43, 297, 229, 60,
+               254, -9, 5, 187, 220, -8, 111, 285, 5, 263, 187, 192, -9, 268,
+               -9, 23, 71, 135, 7, -161, 65, 135, 29,
+               148, 242, 33, 35, 211, 5, 161, 46, 159, 23, 169, 23, 172, 184,
+               -7, 228, 129, 274, 73, 197, 272, 54, 278,
+               26, 280, 13, 171, 2, 79, -2, 183, 10, 236, 276, 4, 29, -10, 41,
+               269, 94, 279, 129, 39, 92, -63, 263, 219,
+               57, 18, 236, 291, 234, 10, 250, 0, 64, 172, 216, 30, 15, 229,
+               205, 123, -105]
 
     print(sum(map(squares, filter(get_two_digit_numbers, numbers))))
 
@@ -356,13 +388,16 @@ def add3(x):
 находит произведение чисел из списка numbers.
 Программист торопился и написал программу неправильно. Доработайте его программу.
 """
-floats = [4.35, 6.09, 3.25, 9.77, 2.16, 8.88, 4.59, 34.23, 12.12, 4.67, 2.45, 9.32]
-words = ['racecar', 'akinremi', 'deed', 'temidayo', 'omoseun', 'civic', 'TATTARRATTAT', 'malayalam', 'nun']
+floats = [4.35, 6.09, 3.25, 9.77, 2.16, 8.88, 4.59, 34.23, 12.12, 4.67, 2.45,
+          9.32]
+words = ['racecar', 'akinremi', 'deed', 'temidayo', 'omoseun', 'civic',
+         'TATTARRATTAT', 'malayalam', 'nun']
 numbers = [4, 6, 9, 23, 5]
 
 # Исправьте этот код
 map_result = list(map(lambda num: round(num ** 2, 1), floats))
-filter_result = list(filter(lambda name: name == name[::-1] and len(name) > 4, words))
+filter_result = list(
+    filter(lambda name: name == name[::-1] and len(name) > 4, words))
 reduce_result = reduce(lambda num1, num2: num1 * num2, numbers, 1)
 
 """
@@ -393,9 +428,11 @@ data = [['Tokyo', 35676000, 'primary'],
         ['Paris', 9904000, 'primary']]
 
 filter_primary = list(filter(lambda word: 'primary' in word, data))
-filter_million = list(map(lambda n: n[0], filter(lambda n: n[1] > 10_000_000, filter_primary)))
+filter_million = list(
+    map(lambda n: n[0], filter(lambda n: n[1] > 10_000_000, filter_primary)))
 sort_filter_million = sorted(filter_million)
-print_res = reduce(lambda x, y: x + ' ' + y + ',', sort_filter_million, 'Cities:')[:-1]
+print_res = reduce(lambda x, y: x + ' ' + y + ',', sort_filter_million,
+                   'Cities:')[:-1]
 # s = list(filter(lambda x:x[1] > 10_000_000 and x[2] == 'primary', data))
 
 #######################
@@ -415,15 +452,15 @@ func = lambda x: True if x % 19 == 0 or x % 13 == 0 else False
 значение True, если переданный аргумент начинается и заканчивается на английскую букву a (регистр буквы неважен) 
 и False в противном случае.
 """
-func_1 = lambda word: word.lower().startswith('a') and word[-1].lower().endswith('a')
+func_1 = lambda word: word.lower().startswith('a') and word[
+    -1].lower().endswith('a')
 # print(func_1('abcdA'))
 
 
-"""
-Напишите функцию is_non_negative_num, используя синтаксис анонимных функций, которая принимает строковый аргумент 
-и возвращает значение True, если переданный аргумент является неотрицательным числом (целым или вещественным) 
-и False в противном случае.
-"""
+"""Напишите функцию is_non_negative_num, используя синтаксис анонимных 
+функций, которая принимает строковый аргумент и возвращает значение True, 
+если переданный аргумент является неотрицательным числом (целым или 
+вещественным) и False в противном случае. """
 is_non_negative_num = lambda n: n.replace('.', '', 1).isnumeric()
 # print(is_non_negative_num('12300'))
 
@@ -432,7 +469,8 @@ is_non_negative_num = lambda n: n.replace('.', '', 1).isnumeric()
 Напишите функцию is_num, используя синтаксис анонимных функций, которая принимает строковый аргумент и возвращает
 значение True, если переданный аргумент является числом (целым или вещественным) и False в противном случае.
 """
-is_num = lambda n: False if '-' in n[1:] else n.replace('-', '', 1).replace('.', '', 1).isnumeric()
+is_num = lambda n: False if '-' in n[1:] else n.replace('-', '', 1).replace(
+    '.', '', 1).isnumeric()
 # is_num = lambda n: is_non_negative_num(n[1:]) if q[0] == '-' else is_non_negative_num(n)
 # print(is_num('-11'))
 
@@ -441,10 +479,14 @@ is_num = lambda n: False if '-' in n[1:] else n.replace('-', '', 1).replace('.',
 Напишите программу, которая с помощью встроенных функций filter() и sorted() выводит слова из списка words, 
 имеющие длину ровно 6 символов. Слова следует вывести в алфавитном порядке на одной строке, разделив символом пробела.
 """
-words = ['beverage', 'monday', 'abroad', 'bias', 'abuse', 'abolish', 'abuse', 'abuse', 'bid', 'wednesday', 'able',
-         'betray', 'accident', 'abduct', 'bigot', 'bet', 'abandon', 'besides', 'access', 'friday', 'bestow',
-         'abound', 'absent', 'beware', 'abundant', 'abnormal', 'aboard', 'about', 'accelerate', 'abort', 'thursday',
-         'tuesday', 'sunday', 'berth', 'beyond', 'benevolent', 'abate', 'abide', 'bicycle', 'beside', 'accept',
+words = ['beverage', 'monday', 'abroad', 'bias', 'abuse', 'abolish', 'abuse',
+         'abuse', 'bid', 'wednesday', 'able',
+         'betray', 'accident', 'abduct', 'bigot', 'bet', 'abandon', 'besides',
+         'access', 'friday', 'bestow',
+         'abound', 'absent', 'beware', 'abundant', 'abnormal', 'aboard',
+         'about', 'accelerate', 'abort', 'thursday',
+         'tuesday', 'sunday', 'berth', 'beyond', 'benevolent', 'abate',
+         'abide', 'bicycle', 'beside', 'accept',
          'berry', 'bewilder', 'abrupt', 'saturday', 'accessory', 'absorb']
 print_words = sorted(filter(lambda x: len(x) == 6, words))
 # print(*print_words)
@@ -455,12 +497,17 @@ print_words = sorted(filter(lambda x: len(x) == 6, words))
 элементы, большие 47, а все четные элементы нацело делит на два (целочисленное деление – //). Полученные числа 
 следует вывести на одной строке, разделив символом пробела и сохранив исходный порядок.
 """
-numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34, 100, 36, 81, 33, 81, 66, 83, 41, 80, 80,
-           93, 40, 34, 32, 16, 5, 16, 40, 93, 36, 65, 8, 19, 8, 75, 66, 21, 72, 32, 41, 59, 35, 64, 49, 78, 83, 27,
-           57, 53, 43, 35, 48, 17, 19, 40, 90, 57, 77, 56, 80, 95, 90, 27, 26, 6, 4, 23, 52, 39, 63, 74, 15, 66, 29,
-           88, 94, 37, 44, 2, 38, 36, 32, 49, 5, 33, 60, 94, 89, 8, 36, 94, 46, 33]
+numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34,
+           100, 36, 81, 33, 81, 66, 83, 41, 80, 80,
+           93, 40, 34, 32, 16, 5, 16, 40, 93, 36, 65, 8, 19, 8, 75, 66, 21, 72,
+           32, 41, 59, 35, 64, 49, 78, 83, 27,
+           57, 53, 43, 35, 48, 17, 19, 40, 90, 57, 77, 56, 80, 95, 90, 27, 26,
+           6, 4, 23, 52, 39, 63, 74, 15, 66, 29,
+           88, 94, 37, 44, 2, 38, 36, 32, 49, 5, 33, 60, 94, 89, 8, 36, 94, 46,
+           33]
 
-numbers_filter = map(lambda n: n // 2 if n % 2 == 0 else n, filter(lambda n: n < 47 or n % 2 == 0, numbers))
+numbers_filter = map(lambda n: n // 2 if n % 2 == 0 else n,
+                     filter(lambda n: n < 47 or n % 2 == 0, numbers))
 # print(*numbers_filter)
 
 """
@@ -475,9 +522,12 @@ Massachusetts: 7029917
 ...
 """
 
-data = [(19542209, 'New York'), (4887871, 'Alabama'), (1420491, 'Hawaii'), (626299, 'Vermont'),
-        (1805832, 'West Virginia'), (39865590, 'California'), (11799448, 'Ohio'), (10711908, 'Georgia'),
-        (10077331, 'Michigan'), (10439388, 'Virginia'), (7705281, 'Washington'), (7151502, 'Arizona'),
+data = [(19542209, 'New York'), (4887871, 'Alabama'), (1420491, 'Hawaii'),
+        (626299, 'Vermont'),
+        (1805832, 'West Virginia'), (39865590, 'California'),
+        (11799448, 'Ohio'), (10711908, 'Georgia'),
+        (10077331, 'Michigan'), (10439388, 'Virginia'),
+        (7705281, 'Washington'), (7151502, 'Arizona'),
         (7029917, 'Massachusetts'), (6910840, 'Tennessee')]
 
 sort_data = sorted(data, key=lambda x: x[1][-1], reverse=True)
@@ -488,8 +538,10 @@ sort_data = sorted(data, key=lambda x: x[1][-1], reverse=True)
 Список data содержит слова на русском языке. Напишите программу его сортировки по возрастанию длины слов,
 а затем в лексикографическом порядке. Отсортированные слова следует вывести на одной строке, разделив символом пробела.
 """
-data = ['год', 'человек', 'время', 'дело', 'жизнь', 'день', 'рука', 'раз', 'работа', 'слово', 'место', 'лицо', 'друг',
-        'глаз', 'вопрос', 'дом', 'сторона', 'страна', 'мир', 'случай', 'голова', 'ребенок', 'сила', 'конец', 'вид',
+data = ['год', 'человек', 'время', 'дело', 'жизнь', 'день', 'рука', 'раз',
+        'работа', 'слово', 'место', 'лицо', 'друг',
+        'глаз', 'вопрос', 'дом', 'сторона', 'страна', 'мир', 'случай',
+        'голова', 'ребенок', 'сила', 'конец', 'вид',
         'система', 'часть', 'город', 'отношение', 'женщина', 'деньги']
 
 sorting_data = sorted(sorted(data), key=len)
@@ -506,15 +558,24 @@ sorting_data = sorted(sorted(data), key=len)
 Примечание 2. Обратите внимание, что сравнивать числа и строки нельзя.
 """
 
-mixed_list = ['tuesday', 'abroad', 'abuse', 'beside', 'monday', 'abate', 'accessory', 'absorb', 1384878, 'sunday',
-              'about', 454805, 'saturday', 'abort', 2121919, 2552839, 977970, 1772933, 1564063, 'abduct', 901271,
-              2680434, 'bicycle', 'accelerate', 1109147, 942908, 'berry', 433507, 'bias', 'bestow', 1875665, 'besides',
-              'bewilder', 1586517, 375290, 1503450, 2713047, 'abnormal', 2286106, 242192, 701049, 2866491, 'benevolent',
-              'bigot', 'abuse', 'abrupt', 343772, 'able', 2135748, 690280, 686008, 'beyond', 2415643, 'aboard', 'bet',
-              859105, 'accident', 2223166, 894187, 146564, 1251748, 2851543, 1619426, 2263113, 1618068, 'berth',
-              'abolish', 'beware', 2618492, 1555062, 'access', 'absent', 'abundant', 2950603, 'betray', 'beverage',
-              'abide', 'abandon', 2284251, 'wednesday', 2709698, 'thursday', 810387, 'friday', 2576799, 2213552,
-              1599022, 'accept', 'abuse', 'abound', 1352953, 'bid', 1805326, 1499197, 2241159, 605320, 2347441]
+mixed_list = ['tuesday', 'abroad', 'abuse', 'beside', 'monday', 'abate',
+              'accessory', 'absorb', 1384878, 'sunday',
+              'about', 454805, 'saturday', 'abort', 2121919, 2552839, 977970,
+              1772933, 1564063, 'abduct', 901271,
+              2680434, 'bicycle', 'accelerate', 1109147, 942908, 'berry',
+              433507, 'bias', 'bestow', 1875665, 'besides',
+              'bewilder', 1586517, 375290, 1503450, 2713047, 'abnormal',
+              2286106, 242192, 701049, 2866491, 'benevolent',
+              'bigot', 'abuse', 'abrupt', 343772, 'able', 2135748, 690280,
+              686008, 'beyond', 2415643, 'aboard', 'bet',
+              859105, 'accident', 2223166, 894187, 146564, 1251748, 2851543,
+              1619426, 2263113, 1618068, 'berth',
+              'abolish', 'beware', 2618492, 1555062, 'access', 'absent',
+              'abundant', 2950603, 'betray', 'beverage',
+              'abide', 'abandon', 2284251, 'wednesday', 2709698, 'thursday',
+              810387, 'friday', 2576799, 2213552,
+              1599022, 'accept', 'abuse', 'abound', 1352953, 'bid', 1805326,
+              1499197, 2241159, 605320, 2347441]
 
 max_mixed_list = max(mixed_list, key=lambda x: x if isinstance(x, int) else 0)
 # print(max_mixed_list)
@@ -526,12 +587,18 @@ max_mixed_list = max(mixed_list, key=lambda x: x if isinstance(x, int) else 0)
 строке, разделив символом пробела.
 """
 
-mixed_list = ['beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides', 'berry', 15, 65, 'abate', 'thursday', 76,
-              70, 94, 35, 36, 'berth', 41, 'abnormal', 'bicycle', 'bid', 'sunday', 'saturday', 87, 'bigot', 41, 'abort',
-              13, 60, 'friday', 26, 13, 'accident', 'access', 40, 26, 20, 75, 13, 40, 67, 12, 'abuse', 78, 10, 80,
-              'accessory', 20, 'bewilder', 'benevolent', 'bet', 64, 38, 65, 51, 95, 'abduct', 37, 98, 99, 14, 'abandon',
-              'accept', 46, 'abide', 'beyond', 19, 'about', 76, 26, 'abound', 12, 95, 'wednesday', 'abundant', 'abrupt',
-              'aboard', 50, 89, 'tuesday', 66, 'bestow', 'absent', 76, 46, 'betray', 47, 'able', 11]
+mixed_list = ['beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides',
+              'berry', 15, 65, 'abate', 'thursday', 76,
+              70, 94, 35, 36, 'berth', 41, 'abnormal', 'bicycle', 'bid',
+              'sunday', 'saturday', 87, 'bigot', 41, 'abort',
+              13, 60, 'friday', 26, 13, 'accident', 'access', 40, 26, 20, 75,
+              13, 40, 67, 12, 'abuse', 78, 10, 80,
+              'accessory', 20, 'bewilder', 'benevolent', 'bet', 64, 38, 65, 51,
+              95, 'abduct', 37, 98, 99, 14, 'abandon',
+              'accept', 46, 'abide', 'beyond', 19, 'about', 76, 26, 'abound',
+              12, 95, 'wednesday', 'abundant', 'abrupt',
+              'aboard', 50, 89, 'tuesday', 66, 'bestow', 'absent', 76, 46,
+              'betray', 47, 'able', 11]
 
 sort_mixed_list = sorted(mixed_list, key=lambda x: (isinstance(x, str), x))
 
@@ -561,7 +628,8 @@ def evaluate(coefficients, x):
     """
     Программа, которая вычисляет значение указанного многочлена при заданном значении x.
     """
-    multiply = map(lambda b, a: b * x ** a, coefficients, range(len(coefficients) - 1, -1, -1))
+    multiply = map(lambda b, a: b * x ** a, coefficients,
+                   range(len(coefficients) - 1, -1, -1))
     res_sum = reduce(lambda a, b: a + b, multiply, 0)
     print(res_sum)
 
@@ -574,7 +642,8 @@ def ignore_command(command):
     Функция ignore_command() принимает на вход один строковый аргумент command – команда, которую нужно проверить,
     и возвращает значение True, если в команде содержится подстрока из списка ignore и False – если нет.
     """
-    ignore = ['alias', 'configuration', 'ip', 'sql', 'select', 'update', 'exec', 'del', 'truncate']
+    ignore = ['alias', 'configuration', 'ip', 'sql', 'select', 'update',
+              'exec', 'del', 'truncate']
     return any(map(lambda x: x in command, ignore))
 
 
@@ -585,7 +654,8 @@ def ignore_command(command):
 """
 countries = ['Russia', 'USA', 'UK', 'Germany', 'France', 'India']
 capitals = ['Moscow', 'Washington', 'London', 'Berlin', 'Paris', 'Delhi']
-population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_380_004_385]
+population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511,
+              1_380_004_385]
 
 
 # for cap, count, pops in zip(capitals, countries, population):
@@ -600,24 +670,29 @@ def set_ball():
     входных данных На вход программе подаются три строки текста с вещественными числами, разделенными символом
     пробела – абсциссы, ординаты и аппликаты точек в трехмерной системе координат.
 
-    Формат выходных данных Программа должна вывести True если все точки с введенными координатами находятся внутри
-    или на границе шара и False, если вне.
+    Формат выходных данных Программа должна вывести True если все точки с
+    введенными координатами находятся внутри или на границе шара и False,
+    если вне.
     """
 
     # abscissas = map(float, input().split())
     # ordinates = map(float, input().split())
     # applicates = map(float, input().split())
-    abscissas, ordinates, applicates = (map(float, input().split()) for _ in range(3))
+    abscissas, ordinates, applicates = (map(float, input().split()) for _ in
+                                        range(3))
     r = 2  # Радиус шара.
-    print(all([x ** 2 + y ** 2 + z ** 2 <= r ** 2 for x, y, z in zip(abscissas, ordinates, applicates)]))
+    print(all([x ** 2 + y ** 2 + z ** 2 <= r ** 2 for x, y, z in
+               zip(abscissas, ordinates, applicates)]))
 
 
 def correct_ip_address():
     """
-    IP-адрес – уникальный числовой идентификатор устройства в компьютерной сети, работающей по протоколу TCP/IP.
+    IP-адрес – уникальный числовой идентификатор устройства в компьютерной
+    сети, работающей по протоколу TCP/IP.
 
-    В 4-й версии IP-адрес представляет собой 32-битное число. Адрес записывается в виде четырёх десятичных чисел
-    (октетов) со значением от 0 до 255 (включительно), разделённых точками, например, 192.168.1.2.
+    В 4-й версии IP-адрес представляет собой 32-битное число. Адрес
+    записывается в виде четырёх десятичных чисел (октетов) со значением от 0
+    до 255 (включительно), разделённых точками, например, 192.168.1.2.
 
     Напишите программу с использованием встроенной функции all() для проверки корректности IP-адреса: все ли октеты в
     IP-адресе – числа со значением от 00 до 255.
@@ -719,7 +794,8 @@ def a():
     return b
 
 
-def generate_letter(mail, name, date, time, place, teacher='Тимур Гуев', number=17):
+def generate_letter(mail, name, date, time, place, teacher='Тимур Гуев',
+                    number=17):
     """
     To: <mail>
     Приветствую, <name>!
@@ -728,7 +804,10 @@ def generate_letter(mail, name, date, time, place, teacher='Тимур Гуев'
     Экзамен будет проводить <teacher> в кабинете <number>.
     Желаем удачи на экзамене!
     """
-    mails = f"To: {mail}\nПриветствую, {name}!\nВам назначен экзамен, который пройдет {date}, в {time}.\nПо адресу: {place}.\nЭкзамен будет проводить {teacher} в кабинете {number}.\nЖелаем удачи на экзамене!"
+    mails = f"To: {mail}\nПриветствую, {name}!\nВам назначен экзамен, " \
+            f"который пройдет {date}, в {time}.\nПо адресу: {place}.\n" \
+            f"Экзамен будет проводить {teacher} в кабинете {number}.\n" \
+            f"Желаем удачи на экзамене! "
     return mails
 
 
@@ -762,10 +841,12 @@ words = 'the world is mine take a look what you have started'.split()
 
 # print(*map(lambda x: f'"{x}"', words))
 
-# numbers = [18, 191, 9009, 5665, 78, 77, 45, 23, 19991, 908, 8976, 6565, 5665, 10, 1000, 908, 909, 232, 45654, 786]
-# print(*filter(lambda x: x != x[::-1], map(str, numbers)))
+# numbers = [18, 191, 9009, 5665, 78, 77, 45, 23, 19991, 908, 8976, 6565,
+# 5665, 10, 1000, 908, 909, 232, 45654, 786] print(*filter(lambda x: x != x[
+# ::-1], map(str, numbers)))
 
-numbers = [(10, -2, 3, 4), (-13, 56), (1, 9, 2), (-1, -9, -45, 32), (-1, 5, 1), (17, 0, 1), (0, 1), (3,), (39, 12),
+numbers = [(10, -2, 3, 4), (-13, 56), (1, 9, 2), (-1, -9, -45, 32), (-1, 5, 1),
+           (17, 0, 1), (0, 1), (3,), (39, 12),
            (11, -23), (10, -100, 21, 32), (3, -8), (1, 1)]
 
 sorted_numbers = sorted(numbers, key=lambda x: sum(x) / len(x), reverse=True)
@@ -847,7 +928,8 @@ div = arithmetic_operation('/')
 # print(div(20, 5))
 
 def test():
-    text = 'cate Frog cat FROGs bee CATERS mouse cATwalk dolphin mOus Cats CatAlo'.split()
+    text = 'cate Frog cat FROGs bee CATERS mouse cATwalk dolphin mOus Cats ' \
+           'CatAlo'.split()
     # text = input().split()
     print(text)
     res = sorted(text, key=lambda x: x.lower())
@@ -864,9 +946,9 @@ def test_2():
 
 
 def test_3():
-    # multiply = map(lambda b, a: b * x ** a, coefficients, range(len(coefficients) - 1, -1, -1))
-    # res_sum = reduce(lambda a, b: a + b, multiply, 0)
-    # print(res_sum)
+    # multiply = map(lambda b, a: b * x ** a, coefficients, range(len(
+    # coefficients) - 1, -1, -1)) res_sum = reduce(lambda a, b: a + b,
+    # multiply, 0) print(res_sum)
     def s(ip):
         res = list(map(int, ip.split('.')))
         tmp = list(map(lambda x, a: x * 256 ** a, res, range(4 - 1, -1, -1)))
@@ -879,26 +961,15 @@ def test_3():
 
 def main():
     test_3()
-    # test_2()
-    # test()
-    # print(product_of_odds([1,2,3]))
-    # print(concat('hello', 'python', 'and', 'stepik'))
-    # print(concat('hello', 'python', 'and', 'stepik', sep='*'))
-    # print(concat(1, 2, 3, 4, 5, 6, 7, 8, 9, sep='$$'))
-    # pretty_print([1, 2, 10, 23, 123, 3000])
-    # print(generate_letter('lara@yandex.ru', 'Лариса', '10 декабря', '12:00', 'Часова 23, корпус 2'))
-    # t = a()
-    # print(t(3))
-    # a = test()
-    # honors_students()
-    # good_password()
-    # interesting_numbers()
-    # correct_ip_address()
-    # set_ball()
-    # print(ignore_command('get ip'))
-    # print(ignore_command('select all'))
-    # print(ignore_command('delete'))
-    # print(ignore_command('trancate'))
+    # test_2() test() print(product_of_odds([1,2,3])) print(concat('hello',
+    # 'python', 'and', 'stepik')) print(concat('hello', 'python', 'and',
+    # 'stepik', sep='*')) print(concat(1, 2, 3, 4, 5, 6, 7, 8, 9, sep='$$'))
+    # pretty_print([1, 2, 10, 23, 123, 3000]) print(generate_letter(
+    # 'lara@yandex.ru', 'Лариса', '10 декабря', '12:00', 'Часова 23, корпус
+    # 2')) t = a() print(t(3)) a = test() honors_students() good_password()
+    # interesting_numbers() correct_ip_address() set_ball() print(
+    # ignore_command('get ip')) print(ignore_command('select all')) print(
+    # ignore_command('delete')) print(ignore_command('trancate'))
 
     # coefficients = [int(num) for num in input().split()]
     # x = int(input())
@@ -917,31 +988,23 @@ def main():
     # mathematical_functions()
     # sort_it_as_you_want()
 
-    # numbers = [(10, 10, 10), (30, 45, 56), (81, 80, 39), (1, 2, 3), (12, 45, 67), (-2, -4, 100), (1, 2, 99),
-    #            (89, 90, 34), (10, 20, 30), (50, 40, 50), (34, 78, 65), (-5, 90, -1)]
-    # sort_sum_min_max(numbers)
+    # numbers = [(10, 10, 10), (30, 45, 56), (81, 80, 39), (1, 2, 3), (12,
+    # 45, 67), (-2, -4, 100), (1, 2, 99), (89, 90, 34), (10, 20, 30), (50,
+    # 40, 50), (34, 78, 65), (-5, 90, -1)] sort_sum_min_max(numbers)
 
-    # points = [(-1, 1), (5, 6), (12, 0), (4, 3), (0, 1), (-3, 2), (0, 0), (-1, 3), (2, 0), (3, 0), (-9, 1), (3, 6),
-    #           (8, 8)]
-    # sort_numbers(points)
+    # points = [(-1, 1), (5, 6), (12, 0), (4, 3), (0, 1), (-3, 2), (0, 0),
+    # (-1, 3), (2, 0), (3, 0), (-9, 1), (3, 6), (8, 8)] sort_numbers(points)
 
-    # numbers = [(10, 10, 10), (30, 45, 56), (81, 39), (1, 2, 3), (12,), (-2, -4, 100), (1, 2, 99), (89, 9, 34),
-    #            (10, 20, 30, -2), (50, 40, 50), (34, 78, 65), (-5, 90, -1, -5), (1, 2, 3, 4, 5, 6), (-9, 8, 4),
-    #            (90, 1, -45, -21)]
-    # get_min_max(numbers)
+    # numbers = [(10, 10, 10), (30, 45, 56), (81, 39), (1, 2, 3), (12,),
+    # (-2, -4, 100), (1, 2, 99), (89, 9, 34), (10, 20, 30, -2), (50, 40,
+    # 50), (34, 78, 65), (-5, 90, -1, -5), (1, 2, 3, 4, 5, 6), (-9, 8, 4),
+    # (90, 1, -45, -21)] get_min_max(numbers)
 
-    # print(
-    #     info_kwargs(
-    #         first_name='Timur',
-    #         last_name='Guev',
-    #         age=28,
-    #         job='teacher'))
-    # print_products('Бананы', [1, 2], ('Stepik',), 'Яблоки', '', 'Макароны', 5, True)
-    # print(greet('Timur'))
-    # print(mean(-1, 2, 3, 10, ('5')))
-    # print(sq_sum(2))
-    # print(count_args([], (''), 'a', 12, False))
-    # print(matrix(3), sep='\n')
+    # print( info_kwargs( first_name='Timur', last_name='Guev', age=28,
+    # job='teacher')) print_products('Бананы', [1, 2], ('Stepik',),
+    # 'Яблоки', '', 'Макароны', 5, True) print(greet('Timur')) print(mean(
+    # -1, 2, 3, 10, ('5'))) print(sq_sum(2)) print(count_args([], (''), 'a',
+    # 12, False)) print(matrix(3), sep='\n')
 
 
 if __name__ == '__main__':
