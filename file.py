@@ -111,8 +111,48 @@ def file_8():
               sep='\n')
 
 
+def file_9():
+    """
+    Вам доступен текстовый файл numbers.txt, каждая строка которого может
+    содержать одно или несколько целых чисел, разделенных одним или
+    несколькими пробелами.
+
+    Напишите программу, которая вычисляет сумму чисел в каждой строке и выводит
+    эту сумму на экран (для каждой строки выводится сумма чисел в этой строке).
+    """
+
+    with open("numbers.txt", "r", encoding="utf-8") as f:
+        for line in f:
+            print(sum(map(int, line.split())))
+
+
+def file_10():
+    """
+    Вам доступен текстовый файл nums.txt. В файле могут быть записаны целые
+    неотрицательные числа и все, что угодно. Числом назовем
+    последовательность одной и более цифр, идущих подряд (число всегда
+    неотрицательно).
+
+    Напишите программу, которая вычисляет сумму всех чисел, записанных в файле.
+    """
+    with open("nums.txt", "r", encoding="utf-8") as f:
+        summa = 0
+        for line in f:
+            for c in line:
+                if not c.isnumeric():
+                    line = line.replace(c, ' ')
+            summa += sum(map(int, line.split()))
+    print(summa)
+
+    # with open('numbers.txt', encoding='utf-8') as file:
+    # row = ''.join(c if c.isdigit() else ' ' for c in file.read())
+    # print(sum(map(int, row.split())))
+
+
 def main():
-    file_8()
+    file_10()
+    # file_9()
+    # file_8()
     # file_7()
     # file_6()
     # file_5()
