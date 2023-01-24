@@ -198,9 +198,45 @@ def random_name_and_surname():
     #     print(random.choice(z).strip(), random.choice(x).strip(), sep=' ')
 
 
+def unusual_countries():
+    """
+    Вам доступен текстовый файл population.txt с названиями стран и
+    численностью их населения, разделенными символом табуляции '\t'.
+
+    Напишите программу выводящую все страны, название которых начинается с
+    буквы 'G', численность населения которых больше чем 500 000 человек,
+    не меняя их порядок.
+    """
+
+    with open("population.txt", "r", encoding="utf-8") as f:
+        for line in f:
+            content = line.split()
+            if content[0].startswith('G') and int(content[-1]) > 500_000:
+                print(*content[:-1])
+    # for line in f:
+    #     n, p = line.split('\t')
+    #     if n.startswith('G') and int(p) > 500000:
+    #         print(n)
+
+
+def csv_file():
+    """
+    Вам доступен CSV-файл data.csv, содержащий информацию в csv формате.
+    Напишите функцию read_csv для чтения данных из этого файла. Она должна
+    возвращать список словарей, интерпретируя первую строку как имена
+    ключей, а каждую последующую строку как значения этих ключей.
+    """
+    def read_csv():
+        with open("data.csv", "r", encoding="utf-8") as f:
+            pass
+    read_csv()
+
+
 
 def main():
-    random_name_and_surname()
+    csv_file()
+    # unusual_countries()
+    # random_name_and_surname()
     # file_11()
     # file_10()
     # file_9()
