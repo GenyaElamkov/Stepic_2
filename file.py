@@ -156,7 +156,7 @@ def file_11():
     строк. Выведите три найденных числа в формате, приведенном в примере.
     """
 
-    with open("file.txt", "r", encoding="utf-8") as f:
+    with open("files/file.txt", "r", encoding="utf-8") as f:
         context = f.readlines()
         # Кол-во строчек.
         counter_line = len(context)
@@ -176,8 +176,32 @@ def file_11():
     # print(len(txt.split()), 'words')
     # print(txt.count('\n') + 1, 'lines'
 
+
+def random_name_and_surname():
+    """
+    Вам доступны два текстовых файла first_names.txt и last_names.txt,
+    один с именами, другой с фамилиями.
+
+    Напишите программу, которая c помощью модуля random создает 33 случайные
+    пары имя + фамилия, а затем выводит их, каждую на отдельной строке.
+    """
+    with open("first_names.txt", "r", encoding="utf-8") as first_names, \
+            open("last_names.txt", "r", encoding="utf-8") as last_names:
+        for _ in range(3):
+            first = choice(first_names.read().split())
+            last = choice(last_names.read().split())
+            first_names.seek(0), last_names.seek(0)
+
+            print(f"{first} {last}")
+    # z, x = f.readlines(), l.readlines()
+    # for i in range(3):
+    #     print(random.choice(z).strip(), random.choice(x).strip(), sep=' ')
+
+
+
 def main():
-    file_11()
+    random_name_and_surname()
+    # file_11()
     # file_10()
     # file_9()
     # file_8()
