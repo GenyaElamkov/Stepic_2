@@ -155,9 +155,26 @@ def file_11():
     программу, которая выводит количество букв латинского алфавита, слов и
     строк. Выведите три найденных числа в формате, приведенном в примере.
     """
-    with open("file.txt", "r", encoding="utf-8") as f:
-        print(f.readlines())
 
+    with open("file.txt", "r", encoding="utf-8") as f:
+        context = f.readlines()
+        # Кол-во строчек.
+        counter_line = len(context)
+        # Кол-во слов.
+        counter_word = sum([len(word.split()) for word in context])
+        # Кол-во букв.
+        counter_char = sum([c.isalpha() for line in context for c in line])
+
+    print(f"Input file contains:\n"
+          f"{counter_char} letters\n"
+          f"{counter_word} words\n"
+          f"{counter_line} lines")
+
+    # txt = f.read()
+    # print('Input file contains:')
+    # print(sum(map(str.isalpha, txt)), 'letters')
+    # print(len(txt.split()), 'words')
+    # print(txt.count('\n') + 1, 'lines'
 
 def main():
     file_11()
