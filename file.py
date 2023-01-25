@@ -228,8 +228,16 @@ def csv_file():
     """
     def read_csv():
         with open("data.csv", "r", encoding="utf-8") as f:
-            pass
-    read_csv()
+
+            header = f.readline().strip().split(',')
+            arr = []
+            for cont in f:
+                cont = cont.strip().split(',')
+                arr.append(dict(zip(header, cont)))
+
+        return arr
+
+    print(read_csv())
 
 
 
