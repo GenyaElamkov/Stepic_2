@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, sample
 
 
 def file_1():
@@ -226,9 +226,9 @@ def csv_file():
     возвращать список словарей, интерпретируя первую строку как имена
     ключей, а каждую последующую строку как значения этих ключей.
     """
+
     def read_csv():
         with open("data.csv", "r", encoding="utf-8") as f:
-
             header = f.readline().strip().split(',')
             arr = []
             for cont in f:
@@ -240,9 +240,173 @@ def csv_file():
     print(read_csv())
 
 
+def input_string():
+    """
+    Напишите программу, которая считывает строку текста и записывает её в
+    текстовый файл output.txt.
+    """
+    line = input()
+    with open("files/output.txt", "w", encoding="utf-8") as f:
+        f.write(line)
+
+    # Или так
+    # print(input(), file=open('output.txt', 'w'))
+
+
+def random_numbers():
+    """
+    Напишите программу, записывающую в текстовый файл random.txt 2525
+    случайных чисел в диапазоне от 111111 до 777777 (включительно), каждое с
+    новой строки.
+    """
+    with open("random.txt", "w", encoding="utf-8") as f:
+        arr_num = sample(range(111, 778), 25)
+        print(*arr_num, sep='\n', file=f)
+
+
+def line_numbering():
+    """
+    Вам доступен текстовый файл input.txt, состоящий из нескольких строк.
+    Напишите программу для записи содержимого этого файла в файл output.txt
+    в виде нумерованного списка, где перед каждой строкой стоит ее номер,
+    символ ) и пробел. Нумерация строк должна начинаться с 1.
+    """
+
+    with open("input.txt", "r", encoding="utf-8") as f, \
+            open("files/output.txt", "w", encoding="utf-8") as out:
+        for i, val in enumerate(f.readlines(), 1):
+            print(f"{i}) {val.strip()}", file=out)
+
+
+def gift_for_the_new_year():
+    """
+    Вам доступен текстовый файл class_scores.txt с оценками за итоговый тест
+    на строках вида: фамилия оценка (фамилия и оценка разделены пробелом).
+    Оценка - целое число от 0 до 100 включительно.
+
+    Напишите программу для добавления 5 баллов к каждому результату теста и
+    вывода фамилий и новых результатов тестов в файл new_scores.txt.
+    """
+    with open("class_scores.txt", "r", encoding="utf-8") as f_1, \
+            open("new_scores.txt", "w", encoding="utf-8") as f_2:
+        for line in f_1:
+            name, score = line.split()
+            print(f"{name} {min(100, int(score) + 5)}", file=f_2)
+
+
+def riddle_jacques_fresco():
+    """
+    Однажды Жака Фреско спросили:
+
+    "Если ты такой умный, почему не богатый?"
+
+    Жак не стал отвечать на столь провокационный вопрос, вместо этого он задал
+    загадку спрашивающему:
+
+    "Были разноцветные козлы. Сколько?"
+
+    "Сколько чего?"
+
+    "Сколько из них составляет более 7% от общего количества козлов?"
+
+    Вам доступен текстовый файл goats.txt в первой строке которого написано
+    слово COLOURS, далее идет список всех возможных цветов козлов. Затем идет
+    строка со словом GOATS, и далее непосредственно перечисление козлов разных
+    цветов. Перечень козлов включает только строки из первого списка.
+
+    Напишите программу создания файла answer.txt и вывода в него списка козлов,
+    которые удовлетворяют условию загадки от Жака Фреско.
+    """
+
+    with open("goats.txt", "r", encoding="utf-8") as f_1, \
+            open("answer.txt", "w", encoding="utf-8") as f_2:
+
+        colours = []
+        for line in f_1:
+            if line.strip() == 'GOATS':
+                break
+            colours.append(line.strip())
+
+        colours.remove('COLOURS')
+
+        goats = [line.strip() for line in f_1]
+
+        for word in colours:
+            res = len(goats) / 100 * goats.count(word)
+            if res > 7:
+                print(f"{word}", file=f_2)
+    #     s = txt.readlines()
+    #     s = s[s.index("GOATS\n") + 1:]
+    #     for i in sorted(set(s)):
+    #         if s.count(i) / len(s) > 0.07:
+    #             file.write(i)
+
+
+def file_concatenation():
+    """
+    На вход программе подается натуральное число nn и nn строк с названиями
+    файлов. Напишите программу, которая создает файл output.txt и выводит в
+    него содержимое всех файлов с указанными именами, не меняя их порядка.
+    """
+    # names_files = [input() for _ in range(int(input()))]
+    names_files = ['test_1.txt', 'test_2.txt']
+    for name in names_files:
+        with open(name, "r", encoding="utf-8") as f_1, \
+                open("files/output.txt", "a", encoding="utf-8") as f_2:
+            print(f_1.read(), end='', file=f_2)
+
+    # with open('output.txt', 'w') as out:
+    #     for i in range(int(input())):
+    #         with open(input()) as f:
+    #             out.write(f.read())
+
+
+def log_file():
+    """
+    Вам доступен текстовый файл logfile.txt с информацией о времени входа
+    пользователя в систему и выхода из нее. Каждая строка файла содержит три
+    значения, разделенные запятыми и символом пробела: имя пользователя,
+    время входа, время выхода, где время указано в 24-часовом формате.
+
+    Напишите программу, которая создает файл output.txt и выводит в него имена
+    всех пользователей (не меняя порядка следования), которые были в сети не
+    менее часа.
+    """
+
+    def minutes(text):
+        hour, minute = [int(num) for num in text.split(":")]
+        return hour * 60 + minute
+
+    with open("files/logfile.txt", "r", encoding="utf-8") as log, \
+            open("files/output.txt", "w", encoding="utf-8") as out:
+        for line in log:
+            line = line.strip().split(',')
+            times = line[-2:]
+            name = line[0]
+            start, stop = [minutes(time) for time in times]
+            if stop - start >= 60:
+                print(name, file=out)
+
+    # def get_diff_mins(time2, time1):
+    #     t2 = list(map(int, time2.split(':')))
+    #     t1 = list(map(int, time1.split(':')))
+    #     return (t2[0] * 60 + t2[1]) - (t1[0] * 60 + t1[1])
+    #
+    # with open('logfile.txt', encoding='utf-8') as inputf,
+    # open('output.txt', 'w') as outputf: for fn in inputf: name, time1,
+    # time2 = fn.strip().split(', ') if get_diff_mins(time2, time1) >= 60:
+    # print(name, file=outputf)
+
 
 def main():
-    csv_file()
+    log_file()
+    # file_concatenation()
+    # riddle_jacques_fresco()
+    # gift_for_the_new_year()
+    # line_numbering()
+    # random_numbers()
+    # input_string()
+    # csv_file()
     # unusual_countries()
     # random_name_and_surname()
     # file_11()
