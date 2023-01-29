@@ -88,7 +88,7 @@ def file_7():
     Напишите программу, выводящую все строки данного файла в обратном
     порядке: сначала последнюю, затем предпоследнюю и т.д.
     """
-    with open("data.txt", "r", encoding="utf-8") as f:
+    with open("files/data.txt", "r", encoding="utf-8") as f:
         for line in f.readlines()[::-1]:
             print(line.strip())
 
@@ -228,7 +228,7 @@ def csv_file():
     """
 
     def read_csv():
-        with open("data.csv", "r", encoding="utf-8") as f:
+        with open("files/data.csv", "r", encoding="utf-8") as f:
             header = f.readline().strip().split(',')
             arr = []
             for cont in f:
@@ -398,8 +398,126 @@ def log_file():
     # print(name, file=outputf)
 
 
+########################
+#
+# Экзамен.
+#
+########################
+
+def test_1():
+    with open(input(), "r", encoding="utf-8") as f:
+        print(len(f.readlines()))
+
+
+def test_2():
+    with open("files/ledger.txt", "r", encoding="utf-8") as f:
+        context = f.read().strip().replace("$", "").split()
+        summa = sum(map(int, context))
+        print(f"${summa}")
+
+
+def test_3():
+    with open("files/grades.txt", "r", encoding="utf-8") as f:
+        # for line in f:
+        #     line = line.split()
+        #     t = all(map(lambda x: int(x) >= 65, line[1:]))
+        print(
+            sum([all(map(lambda x: int(x) >= 65, line.split()[1:])) for line in
+                 f]))
+        # print(t)
+
+
+def test_4():
+    with open("files/words.txt", "r", encoding="utf-8") as f:
+        context = f.read().split()
+        largest = len(max(context, key=len))
+        res = filter(lambda x: len(x) == largest, context)
+        print(*res, sep='\n')
+
+
+def test_5():
+    with open(input(), "r", encoding="utf-8") as f:
+        context = f.readlines()[-10:]
+        # context = f.readlines()
+        print(*context, sep='')
+
+
+def test_6():
+    with open("files/forbidden_words.txt", "r", encoding="utf-8") as forb, \
+            open(input(), "r", encoding="utf-8") as f:
+        worning = forb.read().split()
+        context = f.read()
+        context_lower = context.lower()
+
+        for world in worning:
+            context_lower = context_lower.replace(world, len(world) * "*")
+
+        res = ''
+        for k, c in enumerate(context_lower):
+            if c != '*':
+                res += context[k]
+            else:
+                res += "*"
+
+        print(res)
+
+
+def test_7():
+    """
+    Перерешать.
+    """
+    with open("files/cyrillic.txt", "r", encoding="utf-8") as f_1, \
+            open("files/transliteration.txt", "w", encoding="utf-8") as f_2:
+        d = {
+            'а': 'a', 'к': 'k', 'х': 'h', 'б': 'b', 'л': 'l', 'ц': 'c',
+            'в': 'v', 'м': 'm', 'ч': 'ch',
+            'г': 'g', 'н': 'n', 'ш': 'sh', 'д': 'd', 'о': 'o', 'щ': 'shh',
+            'е': 'e', 'п': 'p', 'ъ': '*',
+            'ё': 'jo', 'р': 'r', 'ы': 'y', 'ж': 'zh', 'с': 's', 'ь': "'",
+            'з': 'z', 'т': 't', 'э': 'je',
+            'и': 'i', 'у': 'u', 'ю': 'ju', 'й': 'j', 'ф': 'f', 'я': 'ya',
+            'А': 'A', 'К': 'K', 'Х': 'H', 'Б': 'B', 'Л': 'L',
+            'Ц': 'C', 'В': 'V', 'М': 'M', 'Ч': 'Ch',
+            'Г': 'G', 'Н': 'N', 'Ш': 'Sh', 'Д': 'D', 'О': 'O', 'Щ': 'Shh',
+            'Е': 'E', 'П': 'P', 'Ъ': '*',
+            'Ё': 'Jo', 'Р': 'R', 'Ы': 'Y', 'Ж': 'Zh', 'С': 'S', 'Ь': "'",
+            'З': 'Z', 'Т': 'T', 'Э': 'Je',
+            'И': 'I', 'У': 'U', 'Ю': 'Ju', 'Й': 'J', 'Ф': 'F', 'Я': 'Ya'
+        }
+
+        # content = f_1.read()
+        # for k, v in d.items():
+        #     content = content.replace(k, v)
+        # print(content, file=f_2)
+
+        for s in f_1.read():
+            res = d.get(s.lower(), s)
+            f_2.write(res if s.islower() else res.capitalize())
+
+
+def test_8():
+    with open(input(), "r", encoding="utf-8") as f:
+        content = f.readlines()
+        flag = True
+        for i, line in enumerate(content):
+            if "def" in line and "#" not in content[i - 1]:
+                flag = False
+                print(line[line.find(" "): line.find("(")])
+
+        if flag:
+            print("Best Programming Team")
+
+
 def main():
-    log_file()
+    # test_8()
+    test_7()
+    # test_6()
+    # test_5()
+    # test_4()
+    # test_3()
+    # test_2()
+    # test_1()
+    # log_file()
     # file_concatenation()
     # riddle_jacques_fresco()
     # gift_for_the_new_year()
